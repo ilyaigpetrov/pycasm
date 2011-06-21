@@ -1,0 +1,11 @@
+import sys
+if len(sys.argv) < 2:
+	print(sys.argv[0]+' file')
+
+import os
+filePath = sys.argv[1]
+fileName = os.path.basename(filePath)
+f = open(filePath)
+fileContent = f.read()
+import re
+f.write( re.sub(fileName[-3]+'Lexer', fileName[-3] , fileContent) )

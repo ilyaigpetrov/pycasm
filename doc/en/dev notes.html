@@ -1,0 +1,618 @@
+<html xmlns:tomboy="http://beatniksoftware.com/tomboy" xmlns:size="http://beatniksoftware.com/tomboy/size" xmlns:link="http://beatniksoftware.com/tomboy/link"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>pycasm</title><style type="text/css">
+	body {  }
+	h1 { font-size: xx-large;
+     	     font-weight: bold;
+     	     border-bottom: 1px solid black; }
+	div.note {
+		   position: relative;
+		   display: block;
+		   padding: 5pt;
+		   margin: 5pt; 
+		   white-space: -moz-pre-wrap; /* Mozilla */
+ 	      	   white-space: -pre-wrap;     /* Opera 4 - 6 */
+ 	      	   white-space: -o-pre-wrap;   /* Opera 7 */
+ 	      	   white-space: pre-wrap;      /* CSS3 */
+ 	      	   word-wrap: break-word;      /* IE 5.5+ */ }
+	</style></head><body><div class="note" id="pycasm"><a name="pycasm"></a><h1>pycasm</h1>
+pycasm aims: 
+
+1) .pyc file generation, 2) low-level language for a VM.
+The first one includes commands for byte-generation: i3 to genererate '69 03 00 00 00' or just 3 to generate '03 00 00 00'.
+The sequence of bytes generated isn't necessary runnable by a VM.
+The second approach makes a correspondance between a command and VM action, commands like 'generate bytes of i3'
+don't make a sense, instead you describe VM action in form like 'here goes constants: i3, here goes globals: i12, then the
+following opcodes as a string '...', understood? run this code'.
+The aims we want to persue define the language (as a most convinient tool to achieve the aim).
+
+why pycasm is not byte-generation tool
+	* it requires the structure of input to mimic .pyc file structure
+	* it's syntax tries to keep and reflect the sematic meaning of the program (VM actions, not higher)
+
+
+from a bird's eye view
+
+pycasm code -&gt; ... -&gt; python bytecode
+some requirements:
+	*must work with UnPyc disasm output
+    ~ UnPyc disasm output may (and probably will) have a separate parser and to byte-code compiler which shares code with pycasm
+
+
+from command line
+
+pycasm filename.pyc.asm
+	writes pyc file to filename.pyc
+pycasm filename_wo_ext
+	writes pyc file to filename_wo_ext.pyc
+pycasm filename -o ofname.pyc
+	writes pyc file to ofname.pyc
+pycasm -d filename.pyc
+	writes filename.pyc.asm
+
+
+from python interpreter
+	...
+
+
+pycasm implementation tools
+
+	* all grammars are written in <a style="color:#204A87" href="#antlr">antlr</a>
+	* all actions are written in java
+		* python target of <a style="color:#204A87" href="#antlr">antlr</a> seems poor (but I have no examples)
+	* alt: if actions are written in python
+		-&gt; fewer tools and platforms
+		-&gt; we can make a python module of pycasm and use it not just via command line but as a normal python module (which is more convinient for unpyc module)
+			^ what about <a style="color:#204A87" href="#antlr">antlr</a>4, is there a python target, is it better?
+		^ does it deserve to give a try?
+	-&gt; all supportive code is written in java
+
+
+more detailed
+
+pyc.asm -&gt; ... -&gt; directives, symnames, bcgen -&gt; ... -&gt; indented ps hex code -&gt; compiled bytecode
+
+pyc.asm
+-&gt; expanded directives, bcgen on demand (for symnames defs, mutable), symnames on demand (for symnames defs, symnames are kept)
+-&gt; hex code with symnames, partialy sub-d bcgen, and bcgen
+-&gt; hex code with partialy sub-d bcgen, and bcgen
+-&gt; indented ps hex code
+-&gt; bytecode
+
+
+/*
+-&gt; hex code with symnames
+-&gt; indented ps hex code
+-&gt; bytecode
+*/
+
+pycasm assembler sematic structures
+
+	* bytegeneration command, including typed bgen, strings
+	* symnames, including opcodes
+	* directives
+	* template directives, which are constrained directives
+	* scopes
+		scope is a mapping from names to their defenitions:
+			symname -&gt; defenition
+			directive name -&gt; defenition
+			scope name -&gt; defenition
+		f.e. scope of directive .code (which is just a string in .pyc),
+		contains all cpvm opcodes which can't be used outside this directive (and scope)
+			* directive arguments scope
+				1) arguments are preferably defined in directive's scope
+				2) for each positional argument of a directive there is a defenitive
+				   accordance to the scope of it's defenition
+				f.e. .codeobject one one two nofree
+				'one' and 'two' are symnames defined in parent scope
+				'nofree' is a flag opcode defined inside the scope .codeobject.flags
+				-&gt; directive desides which scope to use! but conforms to the rules above
+		Can be and if can then how names be redefined?
+			* default opcodes (symnames) can be redefined in some descendant scope but in a noticable way (templates don't afford this)
+				(it's not a pleasure to debug a code for a few hours to finally find out that something which was default for ages is now different)
+				f.e. it can be used for instrumenting each opcode with a trace message
+			* descendant scopes can't redefine scopes of its ancestors (but can redefine names of ancestors) // bla bla bla
+			f.e.
+			.define pop_top
+				print 'pop top'
+				pop_top			&lt;- previous one, no recursion
+		Are scopes a mapping from strings to some type or we need more than a string, some type info attached mb?
+			* Nope, name is just a plain name, nothing attached, all info about type is in definiton
+		
+
+pycasm assembler language
+
+	* try to keep names close to
+		1) .pyc file representations
+		2) standard modules (dis, marshal)
+		3) python sources
+		4) python, jasmin, tasm
+	 Some syntax rules which are hold in unpyc and p.modules
+	 ! opcodes mnemonics are UPPERCASED, (dis module, unpyc)
+	   names of code fields are lowercased,
+	   python names are MixedCased (None, NoneType)
+	^^ for pycasm may be inconvinient if case-switching occures too often
+
+	* try to keep code structure close to structure of .pyc file
+
+	? type syntax
+		unpyc format:
+			tuple:, code: &lt;- looks like a label
+		type(..) format:
+			'str', 'code', 'NoneType'
+		python interpreter format:
+			&lt;type 'str'&gt;, &lt;code object &lt;module&gt;&gt;, &lt;module 'dis'&gt;, &lt;class '...'&gt;
+		jasmin format:
+			.code [name] &lt;descriptor&gt;
+			or
+			.field [name] &lt;descriptor&gt;
+			or
+			L/some/path()V;
+			f.e.
+				.field code s
+				.code s
+				.code __main__ s
+				.consts (4
+				.consts ?12 		&lt;- for unknown type represented by byte 12
+				
+				repetitions or sizes format
+					s15, s(15), 15 rep s, s 15
+					size format can take 2 words: saabbccdd &lt;- what a mess
+					s aa bb cc dd
+				
+	* type format
+			take .pyc one-byte representation of a type
+			make char of it if possible, some escape sequence if not
+			* UnPyc way is: "TYPE:", "type:", "t:value"
+
+	* hackety vs rigid syntax
+			if you restrict programmer from doing what he wants then ... isn't it just boring not to try to write wrong bc for a vm and see what'll happen
+			-&gt; you can write what you want, but you have to do it in a clear, understandable way
+
+	* 'There should be one -- and preferably only one -- obvious way to do it.'
+			  -&gt; you can't write 'blabla' anywhere you want, syntax won't let you do that
+			  ! this beats hackety
+
+	* single way vs hackety
+			language syntax lets you define existing structures in a correct way, which is the only one
+			language syntax lets you make your own structures which are explicitly different (in syntax,
+			not nec. in semantics) from all the defined structures
+
+	* directives
+			'.' directive_name [directive_positional_arguments]
+				[directive body]
+
+	* template directives
+			what is a template directive?
+			it's like a string template or macro, which takes parameters, optional, positional, m.b. named and generates bytecode.
+			# template directive definition proposal
+			# what distinguishes directive from a traditional template is that you can supply not just some arguments and get holed or end definition
+			# (definition as a sequence of bytes conforming to some structure) but you can supply the whole definition, byte by byte,
+			# which still conforms to template directive's structure.
+			So, t.directive is defined by it's name, structure and arguments: neccessary, optional and their default values.
+
+			Do we need t.directives which bytes can't be redefined?
+			this idea is rejected --&gt; 1) This is against hackety but we do need them for convinience,
+			this type of t.directive supply guarantee that generated bc conforms not just in a sense all required fields are
+			defined, but that they are defined with correct byte values. For those who want to hack -- define your own
+			directive and use instead of rigid one.
+			this idea is rejected --&gt; 2) More, we need some reference mechanism, some way to define filled structure which we can use in multiple
+			places as an argument for another template (directive). If you reference this filled template by a name
+			then you definitely can't redefine any byte of it, it can be considered as a such type of a fixed directive.
+			?&gt; why not? if field redefinition is explicit and not obscured then no guarantee are broken -- all redefinitions are
+			clear, observable and highly noticable. &lt;-- redefinable t.directives are accepted
+			
+			more technical defenition
+				t.directive can be described by a grammar, but actually it is so simple that we don't need one
+				t.directive consists of sections (template's holes)
+				each section can be defined by multiple ways:
+					1) positional argument
+					2) in body definition
+					3) with default value (may be empty)
+				sections can't be permutated, but may be skipped (with a 'skip' directive, or '...' )
+
+				diriective forms:
+					expanded
+						all arguments are supplied via body and never inline
+					inline
+						none arguments are supplied via body
+					full expanded
+						expanded and all optional arguments are supplied
+
+				how may directive structure be presented
+				1) it's a tree
+				2) subdirectives (sections) are scope-dependent (namespaces is a great idea)
+					f.e. ??? (any good example)
+					.scope [scope name]
+						[scope body]
+					[.end scope name]
+					
+					t.d. are not just scope dependent, this scope makes constrains the order of it's child directives
+					t.d. is:
+						the way we parse arguments (DIR)
+						possible subs-s in a fixed order &lt;- here come types
+							some of which obligatory, other optional
+							some have defaults, routines to cals them
+					What is the neat python implementation for t.d.scopes?
+						* a list
+							[.kwargs, .args, .flags, .stacklimit, .code ...]
+							too simple
+								we need also: default args, [non]obligatory subsecs
+						
+				f.e.
+					.object
+						.type
+							directive
+						.name
+							codeobject
+						.sections
+							.nlocals
+								.default
+									0
+							.stacksize
+								.default
+									0
+							.flags
+								.default
+									nofree
+							.consts
+							.varnames
+							.cellvars
+						.arguments
+							.number
+								4
+							.required
+								0 &lt;-- .end requires one argument
+						.definition
+							{code for args parsing, default values calculation}
+					.end object
+						
+
+	LIST OF DIRECTIVES
+
+		.end &lt;directive_name&gt;
+			does nothing, used to mark the end of directive's long body
+
+		# template directives (macro directives)
+
+		.&lt;tdirective_name&gt; [args]
+			[tdirective's body]
+
+		.python [version]
+			generates python's version stamp
+
+		.stamp [timestamp]
+			generates pyc-file stamp
+
+		.consts [&lt;'('&gt;number_of_consts] [first_consts]
+			generates bc of type .consts, which can be used in .codeobject
+			f.e.
+			.consts '('1 s'string constant'
+			.consts '('999 t'let\'s start'
+				.object c
+				'i'5
+				&lt;and so on&gt;
+		def consts():
+			.size, .object{.size}
+
+		.codeobject
+			subtemplates: .type, .argcount, .nlocals, .stacksize, .flags, .code, .consts, .names, .varnames, .freevars, .cellvars, .filename, .name, .firstlineno, .lnotab
+
+		# low level directives (trivial or no structure)
+
+		.object [type] [first_values]
+			generates code for object of type .type
+			f.e.
+			.object 'c' 1 1 1 nofree
+				generates: 'c' 1 1 1 1 nofree
+			.object 'c' 1 1 1 nofree
+				.put u'even more'
+				generates: 'c' 1 1 1 1 nofree u'even more'
+
+		.put [byte_generation_sequence]
+			just puts sequence of bytes on the hole
+			f.e.
+			.put 'c' 1 1 1 nofree
+				generates 'c' 1 1 1 1 nofree
+
+
+NOTES ON SYNTAX
+
+.type_notation
+
+	.first_type
+		&lt;encoding_prefix&gt;'&lt;content&gt;'
+			encoding is a way of presenting information as data
+			quotes denote sequence of characters and encoding is applied to each character regardless of it's context
+			so f'1.2' is incorrect since f encoding can't be applied to '.'
+			-&gt; this syntax is used for string types only
+			f.e.
+				u8'utf string content'
+			empty strings are not allowed, use second_type syntax
+
+	.second_type
+		'&lt;type_in_ascii&gt;'&lt;content_suffix&gt;
+			f.e.
+				'i'8 &lt;- integer type followed by type content for 8 (which is an argument)
+				empy argument maps to type_in_ascii...
+				how about multiple arguments?
+					f.e. for dict would be handy to use {'a':2} or dict(**kwargs) syntax
+						! syntax of pycasm and python should divirge if it has different semantics
+							pycasm types are processed by pycasm    &gt;
+							python types are preocessed by python       &gt;  different semantics
+							^ you can make them just a bit different to mark that fact
+								f.e.
+									dict(**kw) in python vs .dict(**kw) in pycasm
+														^ inline directive, never has body
+															^ omg, more work!
+																^ do we need it?
+				'f'2.3 &lt;- float type and it's content
+
+	.type_directive
+		f.e.
+			.float 1.2					# as common directive
+			ee .float(1.2) aa bb		# inline directive
+			.dict(one='two')
+
+.end type_notation
+
+.directive_definition_notation
+
+	directive is a part of pycasm semantic world, not python's
+		-&gt; it has no bytecode representation, no AST
+		-&gt; (currently) every directive takes AST and returns AST
+
+	what language is used to describe AST-&gt;AST directive?
+		python! that python in which you invoke your *asm.py...
+			^ omg, I have to parse python
+				^ just tokenize it as a single token and then eval
+		pycasm? -&gt; not now
+
+	how about .def
+			f.e.
+			.def stamp(AST_ARG, AST_BODY)
+				... in python ...
+				return AST_RESULT
+		I like dot-names to indicate functions which result is placed 'here, at the dot'
+		also it tricks me think that .def is a template directive which is filled for generating function definition, like .dict for dictionary
+		^ 
+	ok, how about ..def
+		first dot indicates that we are pycasm directive
+		second dot indicates
+			that we don't fill any template directive, we are not template directive
+			we are not bound to the ordered context (this is that)
+
+.end directive_definition_notation
+
+.bytegeneration
+
+ff ff ff	; ok
+ff		; ok
+ff ff		; ok
+ ff		; ok
+ ff		; ok
+ff		; ok
+      ff	; ok
+   ff		; not ok, indented from i to i+k, dedented to i+l, 0 &lt; l &lt; k
+
+.end bytegeneration
+
+.current_work
+'''
+This is a todo list where all recent work was suspended.
+Now is better than never.
+'''
+	.add
+	 .types
+	   prefix
+	   suffix
+	 .directives
+	 .templates
+
+	.write
+	  first scripts
+
+	.write
+	  .comment the reverse, the disasm part
+
+.end current_work
+
+.arguments_syntax
+
+	python style
+		f.e.
+			.some_directive(12, 13, 14)
+		* (..,..,..) looks like tuple, cool
+		* allows inline grouping `.str(.int(12))`, `.some_directive(11, .some_other(22, 33), 44))` vs `.some_directive 11 (.some_other 22 33) 44`
+		* looks like a function call (it is actually)
+		- passing a body misleads that it is a declaration of some function
+	vs
+	assembler style
+		f.e.
+			.str 12 13 14
+		* looks like `opname argument` (`load_const 44`), nice
+		* looks like a declaration (it is actually)
+	
+.end arguments_syntax
+
+.references_syntax
+	'''references are used to bring some deep nested code out to make it more readable'''
+	1) reference generates some code to be pasted -&gt; it starts with one dot
+	2) it corresponds to one and only one child of the parent restricted scope
+	3) .reference some_unique_id_of_this_filled_template
+	4) filled template which is being referenced is placed in some parent scope and is "unbound" that is it doesn't conform to restricted scope &lt;- starts with two dots
+	5) f.e.
+	.pycfile
+		... some deep nested structure ...
+			.here
+				.reference here_first_child
+			.end here
+		...
+	.end pycfile
+
+	..fill here_here_first_child
+.end
+
+
+
+
+Bytecode to Pycasm
+
+ways:
+	1) <a style="color:#204A87" href="#antlr">antlr</a> grammar to parse pyc file in binary mode
+		why? to keep all parsers uniform?
+			to let other people reuse your grammar instead of using code in some high level language (which is often harder to understand and work with)
+				<a style="color:#204A87" href="#antlr">antlr</a> grammar for pyc file would look like a shit (I think)
+	2) parser in Python:
+		1) make wrappers around marchal.c of different versions
+			what is PyObject?
+				some basic things: refcount, pointer to some base object (which?) ... whatever
+			marchal.c exposed python methods return PyObject
+				alt1: convert it to pycasm (extend pyObject with __asm__ method, hah)
+				alt2: throw it away, digg in 'r_'-methods (like UnPyc)
+			- you have to compile smth (but distutils just works for you)
+			ok, compilable
+			now, throw away PyObject, instrument 'r_'-methods
+			the algo:
+				read python version
+				read python stamp
+				depending on version load appropriate marshal module (which is got: 1) compiling marshal.c, 2) instrumenting it with to_asm method)
+				pycasm_marshal.to_asm(file) or pycasm_marshal.to_asm(bytes)
+				profit
+			ok, but seems UnPyc works with PyObjects, we want to patch UnPyc
+				then first write to_asm method for UnPyc
+				
+		2) write your own
+		3) take that of UnPyc
+		4) play with marshal from python
+			bytecode -&gt; unmarshalize to python object -&gt; convert to asm... with dis, hah (UnPyc does exact this) &lt;- dis is written in python and small (easily modified)
+			
+
+Flattening Pycasm
+
+.load_from_name some_name
+
+
+
+
+
+__FLUFF__
+
+* whould be nice to have pycasm interpreter, like that of the python :)
+* debugger ?
+*
+
+__END__
+
+('0x0', 'STOP_CODE')
+('0x1', 'POP_TOP')
+('0x2', 'ROT_TWO')
+('0x3', 'ROT_THREE')
+('0x4', 'DUP_TOP')
+('0x5', 'ROT_FOUR')
+('0x9', 'NOP')
+('0xa', 'UNARY_POSITIVE')
+('0xb', 'UNARY_NEGATIVE')
+('0xc', 'UNARY_NOT')
+('0xd', 'UNARY_CONVERT')
+('0xf', 'UNARY_INVERT')
+('0x12', 'LIST_APPEND')
+('0x13', 'BINARY_POWER')
+('0x14', 'BINARY_MULTIPLY')
+('0x15', 'BINARY_DIVIDE')
+('0x16', 'BINARY_MODULO')
+('0x17', 'BINARY_ADD')
+('0x18', 'BINARY_SUBTRACT')
+('0x19', 'BINARY_SUBSCR')
+('0x1a', 'BINARY_FLOOR_DIVIDE')
+('0x1b', 'BINARY_TRUE_DIVIDE')
+('0x1c', 'INPLACE_FLOOR_DIVIDE')
+('0x1d', 'INPLACE_TRUE_DIVIDE')
+('0x1e', 'SLICE+0')
+('0x1f', 'SLICE+1')
+('0x20', 'SLICE+2')
+('0x21', 'SLICE+3')
+('0x28', 'STORE_SLICE+0')
+('0x29', 'STORE_SLICE+1')
+('0x2a', 'STORE_SLICE+2')
+('0x2b', 'STORE_SLICE+3')
+('0x32', 'DELETE_SLICE+0')
+('0x33', 'DELETE_SLICE+1')
+('0x34', 'DELETE_SLICE+2')
+('0x35', 'DELETE_SLICE+3')
+('0x37', 'INPLACE_ADD')
+('0x38', 'INPLACE_SUBTRACT')
+('0x39', 'INPLACE_MULTIPLY')
+('0x3a', 'INPLACE_DIVIDE')
+('0x3b', 'INPLACE_MODULO')
+('0x3c', 'STORE_SUBSCR')
+('0x3d', 'DELETE_SUBSCR')
+('0x3e', 'BINARY_LSHIFT')
+('0x3f', 'BINARY_RSHIFT')
+('0x40', 'BINARY_AND')
+('0x41', 'BINARY_XOR')
+('0x42', 'BINARY_OR')
+('0x43', 'INPLACE_POWER')
+('0x44', 'GET_ITER')
+('0x46', 'PRINT_EXPR')
+('0x47', 'PRINT_ITEM')
+('0x48', 'PRINT_NEWLINE')
+('0x49', 'PRINT_ITEM_TO')
+('0x4a', 'PRINT_NEWLINE_TO')
+('0x4b', 'INPLACE_LSHIFT')
+('0x4c', 'INPLACE_RSHIFT')
+('0x4d', 'INPLACE_AND')
+('0x4e', 'INPLACE_XOR')
+('0x4f', 'INPLACE_OR')
+('0x50', 'BREAK_LOOP')
+('0x51', 'WITH_CLEANUP')
+('0x52', 'LOAD_LOCALS')
+('0x53', 'RETURN_VALUE')
+('0x54', 'IMPORT_STAR')
+('0x55', 'EXEC_STMT')
+('0x56', 'YIELD_VALUE')
+('0x57', 'POP_BLOCK')
+('0x58', 'END_FINALLY')
+('0x59', 'BUILD_CLASS')
+('0x5a', 'STORE_NAME')
+('0x5b', 'DELETE_NAME')
+('0x5c', 'UNPACK_SEQUENCE')
+('0x5d', 'FOR_ITER')
+('0x5f', 'STORE_ATTR')
+('0x60', 'DELETE_ATTR')
+('0x61', 'STORE_GLOBAL')
+('0x62', 'DELETE_GLOBAL')
+('0x63', 'DUP_TOPX')
+('0x64', 'LOAD_CONST')
+('0x65', 'LOAD_NAME')
+('0x66', 'BUILD_TUPLE')
+('0x67', 'BUILD_LIST')
+('0x68', 'BUILD_MAP')
+('0x69', 'LOAD_ATTR')
+('0x6a', 'COMPARE_OP')
+('0x6b', 'IMPORT_NAME')
+('0x6c', 'IMPORT_FROM')
+('0x6e', 'JUMP_FORWARD')
+('0x6f', 'JUMP_IF_FALSE')
+('0x70', 'JUMP_IF_TRUE')
+('0x71', 'JUMP_ABSOLUTE')
+('0x74', 'LOAD_GLOBAL')
+('0x77', 'CONTINUE_LOOP')
+('0x78', 'SETUP_LOOP')
+('0x79', 'SETUP_EXCEPT')
+('0x7a', 'SETUP_FINALLY')
+('0x7c', 'LOAD_FAST')
+('0x7d', 'STORE_FAST')
+('0x7e', 'DELETE_FAST')
+('0x82', 'RAISE_VARARGS')
+('0x83', 'CALL_FUNCTION')
+('0x84', 'MAKE_FUNCTION')
+('0x85', 'BUILD_SLICE')
+('0x86', 'MAKE_CLOSURE')
+('0x87', 'LOAD_CLOSURE')
+('0x88', 'LOAD_DEREF')
+('0x89', 'STORE_DEREF')
+('0x8c', 'CALL_FUNCTION_VAR')
+('0x8d', 'CALL_FUNCTION_KW')
+('0x8e', 'CALL_FUNCTION_VAR_KW')
+('0x8f', 'EXTENDED_ARG')
+
+</div></body></html>

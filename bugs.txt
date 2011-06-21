@@ -1,0 +1,6 @@
+* newline followed by whitespace and then EOF or '#'
+still generates and counts DENTs. (don't use comments)
+* DOT_ARGS eats lots of space after .str()...<- here
+and eventualy .str's function doesn't parse out the spaces
+(don't write anything after the ')')
+* lot's of other I don't want to know
