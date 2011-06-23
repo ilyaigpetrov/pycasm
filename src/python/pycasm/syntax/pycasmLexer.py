@@ -1,4 +1,4 @@
-# $ANTLR 3.1.3 Mar 17, 2009 19:23:44 G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g 2011-06-22 00:39:52
+# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g 2011-06-23 13:21:06
 
 import sys
 from antlr3 import *
@@ -13,57 +13,43 @@ infinity = decimal.Decimal('Infinity')
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-DOT_DOT_BODY=42
-DOT_DOT_NAME=28
-INDENTDEDENT=30
-DOT_DOT_ARGS=41
-HexAlpha=27
+Alpha=16
+DOT_DOT_BODY=20
+Type=26
+DOT_DOT_NAME=13
+DOT_DOT_ARGS=18
+AlphaNum=31
+TYPED_VALUE=27
+DOT_END=10
+HexAlpha=32
+HEX_DIGIT=24
 DEDENT=4
+Digit=30
+HEX_DQUAD=22
 EOF=-1
-HexDigit=13
+HexDigit=25
 INDENT=5
-NAME=20
-NNN=29
-PYTHON_CHAR=35
-DIRECTIVE_ARGS=44
-DOT_DOT_DIRECTIVE_ARGS=39
+NAME=11
+WS=14
+NEWLINE=9
+NonWS=19
+BLOCK=6
 ARGS=7
 GEN=8
-INDENT_OR_DEDENT=34
-COMMENT=23
-UNRESTRICTED_DIRECTIVE=33
-DOT_ARGS=45
-HEX_QUAD=9
-HEX_PAIR=11
-PYTHON_BLOCK=31
-DIRECTIVE_ARGUMENT=25
-Any=32
-Alpha=18
-Type=15
-AlphaNum=24
-TYPED_VALUE=16
-DOT_END=14
-NONWS=38
-HEX_DIGIT=12
-P=37
-HEX_DQUAD=10
-Digit=26
-DOT_DOT_DIRECTIVE_BODY=40
-WS=22
-NEWLINE=21
-NonWS=43
-BLOCK=6
-PCHAR=36
-DOT_NAME=19
-HEX_SEQUENCE=46
-STRING=17
+DOT_NAME=12
+INDENT_OR_DEDENT=29
+COMMENT=15
+HEX_QUAD=21
+DOT_ARGS=17
+STRING=28
+HEX_PAIR=23
 
 
 class pycasmLexer(Lexer):
 
-    grammarFileName = "G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g"
-    antlr_version = version_str_to_tuple("3.1.3 Mar 17, 2009 19:23:44")
-    antlr_version_str = "3.1.3 Mar 17, 2009 19:23:44"
+    grammarFileName = "/root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g"
+    antlr_version = version_str_to_tuple("3.1.3 Mar 18, 2009 10:09:25")
+    antlr_version_str = "3.1.3 Mar 18, 2009 10:09:25"
 
     def __init__(self, input=None, state=None):
         if state is None:
@@ -155,8 +141,8 @@ class pycasmLexer(Lexer):
             _type = DOT_END
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:88:2: ( '.end' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:89:3: '.end'
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:88:2: ( '.end' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:89:3: '.end'
             pass 
             self.match(".end")
 
@@ -180,8 +166,8 @@ class pycasmLexer(Lexer):
             _type = DOT_NAME
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:93:2: ( '.' NAME )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:94:3: '.' NAME
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:93:2: ( '.' NAME )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:94:3: '.' NAME
             pass 
             self.match(46)
             self.mNAME()
@@ -206,8 +192,8 @@ class pycasmLexer(Lexer):
             _type = DOT_DOT_NAME
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:98:2: ( '..' NAME )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:99:3: '..' NAME
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:98:2: ( '..' NAME )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:99:3: '..' NAME
             pass 
             self.match("..")
             self.mNAME()
@@ -235,16 +221,16 @@ class pycasmLexer(Lexer):
                    
             _channel=HIDDEN
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:2: ({...}? => ( WS )* '#' (~ '\\n' )* ( '\\n' )* | {...}? => ( WS )* '#' (~ '\\n' )* )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:2: ({...}? => ( WS )* '#' (~ '\\n' )* ( '\\n' )* | {...}? => ( WS )* '#' (~ '\\n' )* )
             alt6 = 2
             alt6 = self.dfa6.predict(self.input)
             if alt6 == 1:
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:7: {...}? => ( WS )* '#' (~ '\\n' )* ( '\\n' )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:7: {...}? => ( WS )* '#' (~ '\\n' )* ( '\\n' )*
                 pass 
                 if not ((self.getColumn() == 0)):
                     raise FailedPredicateException(self.input, "COMMENT", "self.getColumn() == 0")
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:35: ( WS )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:35: ( WS )*
                 while True: #loop1
                     alt1 = 2
                     LA1_0 = self.input.LA(1)
@@ -254,7 +240,7 @@ class pycasmLexer(Lexer):
 
 
                     if alt1 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:35: WS
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:35: WS
                         pass 
                         self.mWS()
 
@@ -262,7 +248,7 @@ class pycasmLexer(Lexer):
                     else:
                         break #loop1
                 self.match(35)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:43: (~ '\\n' )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:43: (~ '\\n' )*
                 while True: #loop2
                     alt2 = 2
                     LA2_0 = self.input.LA(1)
@@ -272,7 +258,7 @@ class pycasmLexer(Lexer):
 
 
                     if alt2 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:44: ~ '\\n'
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:44: ~ '\\n'
                         pass 
                         if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 65535):
                             self.input.consume()
@@ -285,7 +271,7 @@ class pycasmLexer(Lexer):
 
                     else:
                         break #loop2
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:52: ( '\\n' )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:52: ( '\\n' )*
                 while True: #loop3
                     alt3 = 2
                     LA3_0 = self.input.LA(1)
@@ -295,7 +281,7 @@ class pycasmLexer(Lexer):
 
 
                     if alt3 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:106:52: '\\n'
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:106:52: '\\n'
                         pass 
                         self.match(10)
 
@@ -305,12 +291,12 @@ class pycasmLexer(Lexer):
 
 
             elif alt6 == 2:
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:107:7: {...}? => ( WS )* '#' (~ '\\n' )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:107:7: {...}? => ( WS )* '#' (~ '\\n' )*
                 pass 
                 if not ((self.getColumn() > 0 )):
                     raise FailedPredicateException(self.input, "COMMENT", "self.getColumn() > 0 ")
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:107:35: ( WS )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:107:35: ( WS )*
                 while True: #loop4
                     alt4 = 2
                     LA4_0 = self.input.LA(1)
@@ -320,7 +306,7 @@ class pycasmLexer(Lexer):
 
 
                     if alt4 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:107:35: WS
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:107:35: WS
                         pass 
                         self.mWS()
 
@@ -328,7 +314,7 @@ class pycasmLexer(Lexer):
                     else:
                         break #loop4
                 self.match(35)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:107:43: (~ '\\n' )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:107:43: (~ '\\n' )*
                 while True: #loop5
                     alt5 = 2
                     LA5_0 = self.input.LA(1)
@@ -338,7 +324,7 @@ class pycasmLexer(Lexer):
 
 
                     if alt5 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:107:44: ~ '\\n'
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:107:44: ~ '\\n'
                         pass 
                         if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 65535):
                             self.input.consume()
@@ -371,8 +357,8 @@ class pycasmLexer(Lexer):
             _type = DOT_ARGS
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:111:2: ({...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+ )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:112:2: {...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:111:2: ({...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+ )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:112:2: {...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+
             pass 
             if not ((self.lookBehindToken and self.lookBehindToken.getType() in [DOT_NAME]     )):
                 raise FailedPredicateException(self.input, "DOT_ARGS", " self.lookBehindToken and self.lookBehindToken.getType() in [DOT_NAME]     ")
@@ -384,7 +370,7 @@ class pycasmLexer(Lexer):
                 self.recover(mse)
                 raise mse
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:112:102: (~ ( '\\n' | '\\r' | '#' ) )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:112:102: (~ ( '\\n' | '\\r' | '#' ) )+
             cnt7 = 0
             while True: #loop7
                 alt7 = 2
@@ -395,7 +381,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt7 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:112:102: ~ ( '\\n' | '\\r' | '#' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:112:102: ~ ( '\\n' | '\\r' | '#' )
                     pass 
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 34) or (36 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -435,8 +421,8 @@ class pycasmLexer(Lexer):
             _type = DOT_DOT_ARGS
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:116:2: ({...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+ )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:117:2: {...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:116:2: ({...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+ )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:117:2: {...}? =>~ ( Alpha | '\\n' | '\\r' ) (~ ( '\\n' | '\\r' | '#' ) )+
             pass 
             if not ((self.lookBehindToken and self.lookBehindToken.getType() in [DOT_DOT_NAME] )):
                 raise FailedPredicateException(self.input, "DOT_DOT_ARGS", " self.lookBehindToken and self.lookBehindToken.getType() in [DOT_DOT_NAME] ")
@@ -448,7 +434,7 @@ class pycasmLexer(Lexer):
                 self.recover(mse)
                 raise mse
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:117:102: (~ ( '\\n' | '\\r' | '#' ) )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:117:102: (~ ( '\\n' | '\\r' | '#' ) )+
             cnt8 = 0
             while True: #loop8
                 alt8 = 2
@@ -459,7 +445,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt8 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:117:102: ~ ( '\\n' | '\\r' | '#' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:117:102: ~ ( '\\n' | '\\r' | '#' )
                     pass 
                     if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 34) or (36 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -503,13 +489,13 @@ class pycasmLexer(Lexer):
             self.numberOfSpacesInPythonBlock = 0
             self.minNumberOfSpacesInPythonBlock = infinity
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:125:2: ({...}? => ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )* )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:125:4: {...}? => ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:125:2: ({...}? => ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )* )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:125:4: {...}? => ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )*
             pass 
             if not ((self.lookBehindToken and self.lookBehindToken.getType() in [DOT_DOT_NAME, DOT_DOT_ARGS] )):
                 raise FailedPredicateException(self.input, "DOT_DOT_BODY", " self.lookBehindToken and self.lookBehindToken.getType() in [DOT_DOT_NAME, DOT_DOT_ARGS] ")
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:126:3: ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:126:3: ( ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )? )*
             while True: #loop13
                 alt13 = 2
                 LA13_0 = self.input.LA(1)
@@ -519,16 +505,16 @@ class pycasmLexer(Lexer):
 
 
                 if alt13 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:126:4: ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:126:4: ( '\\r' )? '\\n' ( ' ' | '\\t' )* ({...}? => ( NonWS ( NonWS | WS )* ) )?
                     pass 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:126:4: ( '\\r' )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:126:4: ( '\\r' )?
                     alt9 = 2
                     LA9_0 = self.input.LA(1)
 
                     if (LA9_0 == 13) :
                         alt9 = 1
                     if alt9 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:126:4: '\\r'
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:126:4: '\\r'
                         pass 
                         self.match(13)
 
@@ -538,7 +524,7 @@ class pycasmLexer(Lexer):
                     #action start
                     self.numberOfSpacesInPythonBlock = 0 
                     #action end
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:128:7: ( ' ' | '\\t' )*
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:128:7: ( ' ' | '\\t' )*
                     while True: #loop10
                         alt10 = 3
                         LA10_0 = self.input.LA(1)
@@ -550,7 +536,7 @@ class pycasmLexer(Lexer):
 
 
                         if alt10 == 1:
-                            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:129:5: ' '
+                            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:129:5: ' '
                             pass 
                             self.match(32)
                             #action start
@@ -559,7 +545,7 @@ class pycasmLexer(Lexer):
 
 
                         elif alt10 == 2:
-                            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:130:5: '\\t'
+                            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:130:5: '\\t'
                             pass 
                             self.match(9)
                             #action start
@@ -569,23 +555,23 @@ class pycasmLexer(Lexer):
 
                         else:
                             break #loop10
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:132:7: ({...}? => ( NonWS ( NonWS | WS )* ) )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:132:7: ({...}? => ( NonWS ( NonWS | WS )* ) )?
                     alt12 = 2
                     LA12_0 = self.input.LA(1)
 
                     if ((0 <= LA12_0 <= 8) or (11 <= LA12_0 <= 12) or (14 <= LA12_0 <= 31) or (33 <= LA12_0 <= 65535)) and ((min(self.minNumberOfSpacesInPythonBlock, self.numberOfSpacesInPythonBlock) > self.numberOfSpaces )):
                         alt12 = 1
                     if alt12 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:133:4: {...}? => ( NonWS ( NonWS | WS )* )
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:133:4: {...}? => ( NonWS ( NonWS | WS )* )
                         pass 
                         if not ((min(self.minNumberOfSpacesInPythonBlock, self.numberOfSpacesInPythonBlock) > self.numberOfSpaces )):
                             raise FailedPredicateException(self.input, "DOT_DOT_BODY", " min(self.minNumberOfSpacesInPythonBlock, self.numberOfSpacesInPythonBlock) > self.numberOfSpaces ")
 
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:133:109: ( NonWS ( NonWS | WS )* )
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:134:5: NonWS ( NonWS | WS )*
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:133:109: ( NonWS ( NonWS | WS )* )
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:134:5: NonWS ( NonWS | WS )*
                         pass 
                         self.mNonWS()
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:134:11: ( NonWS | WS )*
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:134:11: ( NonWS | WS )*
                         while True: #loop11
                             alt11 = 2
                             LA11_0 = self.input.LA(1)
@@ -595,7 +581,7 @@ class pycasmLexer(Lexer):
 
 
                             if alt11 == 1:
-                                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:
+                                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:
                                 pass 
                                 if (0 <= self.input.LA(1) <= 9) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 65535):
                                     self.input.consume()
@@ -642,8 +628,8 @@ class pycasmLexer(Lexer):
             _type = HEX_DQUAD
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:142:2: ( HEX_QUAD HEX_QUAD )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:143:3: HEX_QUAD HEX_QUAD
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:142:2: ( HEX_QUAD HEX_QUAD )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:143:3: HEX_QUAD HEX_QUAD
             pass 
             self.mHEX_QUAD()
             self.mHEX_QUAD()
@@ -668,8 +654,8 @@ class pycasmLexer(Lexer):
             _type = HEX_QUAD
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:147:2: ( HEX_PAIR HEX_PAIR )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:148:3: HEX_PAIR HEX_PAIR
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:147:2: ( HEX_PAIR HEX_PAIR )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:148:3: HEX_PAIR HEX_PAIR
             pass 
             self.mHEX_PAIR()
             self.mHEX_PAIR()
@@ -694,8 +680,8 @@ class pycasmLexer(Lexer):
             _type = HEX_PAIR
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:152:2: ( HEX_DIGIT HEX_DIGIT )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:153:3: HEX_DIGIT HEX_DIGIT
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:152:2: ( HEX_DIGIT HEX_DIGIT )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:153:3: HEX_DIGIT HEX_DIGIT
             pass 
             self.mHEX_DIGIT()
             self.mHEX_DIGIT()
@@ -720,8 +706,8 @@ class pycasmLexer(Lexer):
             _type = HEX_DIGIT
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:157:2: ( HexDigit )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:158:3: HexDigit
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:157:2: ( HexDigit )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:158:3: HexDigit
             pass 
             self.mHexDigit()
 
@@ -745,12 +731,12 @@ class pycasmLexer(Lexer):
             _type = TYPED_VALUE
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:169:2: ( Type '\\'' (~ ( '\\'' ) )* '\\'' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:170:3: Type '\\'' (~ ( '\\'' ) )* '\\''
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:169:2: ( Type '\\'' (~ ( '\\'' ) )* '\\'' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:170:3: Type '\\'' (~ ( '\\'' ) )* '\\''
             pass 
             self.mType()
             self.match(39)
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:170:13: (~ ( '\\'' ) )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:170:13: (~ ( '\\'' ) )*
             while True: #loop14
                 alt14 = 2
                 LA14_0 = self.input.LA(1)
@@ -760,7 +746,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt14 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:170:13: ~ ( '\\'' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:170:13: ~ ( '\\'' )
                     pass 
                     if (0 <= self.input.LA(1) <= 38) or (40 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -795,11 +781,11 @@ class pycasmLexer(Lexer):
             _type = STRING
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:174:2: ( '\\'' (~ ( '\\'' ) )+ '\\'' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:174:4: '\\'' (~ ( '\\'' ) )+ '\\''
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:174:2: ( '\\'' (~ ( '\\'' ) )+ '\\'' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:174:4: '\\'' (~ ( '\\'' ) )+ '\\''
             pass 
             self.match(39)
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:174:9: (~ ( '\\'' ) )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:174:9: (~ ( '\\'' ) )+
             cnt15 = 0
             while True: #loop15
                 alt15 = 2
@@ -810,7 +796,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt15 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:174:9: ~ ( '\\'' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:174:9: ~ ( '\\'' )
                     pass 
                     if (0 <= self.input.LA(1) <= 38) or (40 <= self.input.LA(1) <= 65535):
                         self.input.consume()
@@ -851,10 +837,10 @@ class pycasmLexer(Lexer):
             _type = NAME
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:177:6: ( ( Alpha | '_' )+ )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:178:3: ( Alpha | '_' )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:177:6: ( ( Alpha | '_' )+ )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:178:3: ( Alpha | '_' )+
             pass 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:178:3: ( Alpha | '_' )+
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:178:3: ( Alpha | '_' )+
             cnt16 = 0
             while True: #loop16
                 alt16 = 2
@@ -865,7 +851,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt16 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:
                     pass 
                     if (65 <= self.input.LA(1) <= 90) or self.input.LA(1) == 95 or (97 <= self.input.LA(1) <= 122):
                         self.input.consume()
@@ -908,27 +894,27 @@ class pycasmLexer(Lexer):
                    
             self.numberOfSpaces = 0
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:185:2: ( ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )* ( ( '\\r' )? '\\n' ) ( ' ' | '\\t' )* )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:3: ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )* ( ( '\\r' )? '\\n' ) ( ' ' | '\\t' )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:185:2: ( ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )* ( ( '\\r' )? '\\n' ) ( ' ' | '\\t' )* )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:3: ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )* ( ( '\\r' )? '\\n' ) ( ' ' | '\\t' )*
             pass 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:3: ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:3: ( ( ( '\\r' )? '\\n' ) | '\\t' | ' ' )*
             while True: #loop18
                 alt18 = 4
                 alt18 = self.dfa18.predict(self.input)
                 if alt18 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:5: ( ( '\\r' )? '\\n' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:5: ( ( '\\r' )? '\\n' )
                     pass 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:5: ( ( '\\r' )? '\\n' )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:7: ( '\\r' )? '\\n'
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:5: ( ( '\\r' )? '\\n' )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:7: ( '\\r' )? '\\n'
                     pass 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:7: ( '\\r' )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:7: ( '\\r' )?
                     alt17 = 2
                     LA17_0 = self.input.LA(1)
 
                     if (LA17_0 == 13) :
                         alt17 = 1
                     if alt17 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:8: '\\r'
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:8: '\\r'
                         pass 
                         self.match(13)
 
@@ -941,30 +927,30 @@ class pycasmLexer(Lexer):
 
 
                 elif alt18 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:24: '\\t'
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:24: '\\t'
                     pass 
                     self.match(9)
 
 
                 elif alt18 == 3:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:186:31: ' '
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:186:31: ' '
                     pass 
                     self.match(32)
 
 
                 else:
                     break #loop18
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:187:3: ( ( '\\r' )? '\\n' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:187:5: ( '\\r' )? '\\n'
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:187:3: ( ( '\\r' )? '\\n' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:187:5: ( '\\r' )? '\\n'
             pass 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:187:5: ( '\\r' )?
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:187:5: ( '\\r' )?
             alt19 = 2
             LA19_0 = self.input.LA(1)
 
             if (LA19_0 == 13) :
                 alt19 = 1
             if alt19 == 1:
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:187:6: '\\r'
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:187:6: '\\r'
                 pass 
                 self.match(13)
 
@@ -974,7 +960,7 @@ class pycasmLexer(Lexer):
 
 
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:188:3: ( ' ' | '\\t' )*
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:188:3: ( ' ' | '\\t' )*
             while True: #loop20
                 alt20 = 3
                 LA20_0 = self.input.LA(1)
@@ -986,7 +972,7 @@ class pycasmLexer(Lexer):
 
 
                 if alt20 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:188:5: ' '
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:188:5: ' '
                     pass 
                     self.match(32)
                     #action start
@@ -995,7 +981,7 @@ class pycasmLexer(Lexer):
 
 
                 elif alt20 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:189:5: '\\t'
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:189:5: '\\t'
                     pass 
                     self.match(9)
                     #action start
@@ -1052,8 +1038,8 @@ class pycasmLexer(Lexer):
             _type = WS
             _channel = DEFAULT_CHANNEL
 
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:217:4: ( ( ' ' | '\\t' ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:217:6: ( ' ' | '\\t' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:217:4: ( ( ' ' | '\\t' ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:217:6: ( ' ' | '\\t' )
             pass 
             if self.input.LA(1) == 9 or self.input.LA(1) == 32:
                 self.input.consume()
@@ -1080,8 +1066,8 @@ class pycasmLexer(Lexer):
     def mNonWS(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:224:2: (~ ( WS | '\\n' | '\\r' ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:225:3: ~ ( WS | '\\n' | '\\r' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:224:2: (~ ( WS | '\\n' | '\\r' ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:225:3: ~ ( WS | '\\n' | '\\r' )
             pass 
             if (0 <= self.input.LA(1) <= 8) or (11 <= self.input.LA(1) <= 12) or (14 <= self.input.LA(1) <= 31) or (33 <= self.input.LA(1) <= 65535):
                 self.input.consume()
@@ -1106,8 +1092,8 @@ class pycasmLexer(Lexer):
     def mAlphaNum(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:230:9: ( ( Alpha | Digit ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:231:3: ( Alpha | Digit )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:230:9: ( ( Alpha | Digit ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:231:3: ( Alpha | Digit )
             pass 
             if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 90) or (97 <= self.input.LA(1) <= 122):
                 self.input.consume()
@@ -1132,8 +1118,8 @@ class pycasmLexer(Lexer):
     def mType(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:235:6: ( 's' | 't' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:235:6: ( 's' | 't' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:
             pass 
             if (115 <= self.input.LA(1) <= 116):
                 self.input.consume()
@@ -1158,8 +1144,8 @@ class pycasmLexer(Lexer):
     def mAlpha(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:241:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:242:3: ( 'a' .. 'z' | 'A' .. 'Z' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:241:2: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:242:3: ( 'a' .. 'z' | 'A' .. 'Z' )
             pass 
             if (65 <= self.input.LA(1) <= 90) or (97 <= self.input.LA(1) <= 122):
                 self.input.consume()
@@ -1184,8 +1170,8 @@ class pycasmLexer(Lexer):
     def mHexAlpha(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:247:2: ( ( 'a' .. 'f' | 'A' .. 'F' ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:248:3: ( 'a' .. 'f' | 'A' .. 'F' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:247:2: ( ( 'a' .. 'f' | 'A' .. 'F' ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:248:3: ( 'a' .. 'f' | 'A' .. 'F' )
             pass 
             if (65 <= self.input.LA(1) <= 70) or (97 <= self.input.LA(1) <= 102):
                 self.input.consume()
@@ -1210,8 +1196,8 @@ class pycasmLexer(Lexer):
     def mHexDigit(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:253:2: ( ( HexAlpha | Digit ) )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:254:3: ( HexAlpha | Digit )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:253:2: ( ( HexAlpha | Digit ) )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:254:3: ( HexAlpha | Digit )
             pass 
             if (48 <= self.input.LA(1) <= 57) or (65 <= self.input.LA(1) <= 70) or (97 <= self.input.LA(1) <= 102):
                 self.input.consume()
@@ -1236,8 +1222,8 @@ class pycasmLexer(Lexer):
     def mDigit(self, ):
 
         try:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:258:7: ( '0' .. '9' )
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:259:3: '0' .. '9'
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:258:7: ( '0' .. '9' )
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:259:3: '0' .. '9'
             pass 
             self.matchRange(48, 57)
 
@@ -1253,101 +1239,101 @@ class pycasmLexer(Lexer):
 
 
     def mTokens(self):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:8: ( DOT_END | DOT_NAME | DOT_DOT_NAME | COMMENT | DOT_ARGS | DOT_DOT_ARGS | DOT_DOT_BODY | HEX_DQUAD | HEX_QUAD | HEX_PAIR | HEX_DIGIT | TYPED_VALUE | STRING | NAME | INDENT_OR_DEDENT | WS )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:8: ( DOT_END | DOT_NAME | DOT_DOT_NAME | COMMENT | DOT_ARGS | DOT_DOT_ARGS | DOT_DOT_BODY | HEX_DQUAD | HEX_QUAD | HEX_PAIR | HEX_DIGIT | TYPED_VALUE | STRING | NAME | INDENT_OR_DEDENT | WS )
         alt21 = 16
         alt21 = self.dfa21.predict(self.input)
         if alt21 == 1:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:10: DOT_END
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:10: DOT_END
             pass 
             self.mDOT_END()
 
 
         elif alt21 == 2:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:18: DOT_NAME
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:18: DOT_NAME
             pass 
             self.mDOT_NAME()
 
 
         elif alt21 == 3:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:27: DOT_DOT_NAME
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:27: DOT_DOT_NAME
             pass 
             self.mDOT_DOT_NAME()
 
 
         elif alt21 == 4:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:40: COMMENT
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:40: COMMENT
             pass 
             self.mCOMMENT()
 
 
         elif alt21 == 5:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:48: DOT_ARGS
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:48: DOT_ARGS
             pass 
             self.mDOT_ARGS()
 
 
         elif alt21 == 6:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:57: DOT_DOT_ARGS
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:57: DOT_DOT_ARGS
             pass 
             self.mDOT_DOT_ARGS()
 
 
         elif alt21 == 7:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:70: DOT_DOT_BODY
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:70: DOT_DOT_BODY
             pass 
             self.mDOT_DOT_BODY()
 
 
         elif alt21 == 8:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:83: HEX_DQUAD
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:83: HEX_DQUAD
             pass 
             self.mHEX_DQUAD()
 
 
         elif alt21 == 9:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:93: HEX_QUAD
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:93: HEX_QUAD
             pass 
             self.mHEX_QUAD()
 
 
         elif alt21 == 10:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:102: HEX_PAIR
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:102: HEX_PAIR
             pass 
             self.mHEX_PAIR()
 
 
         elif alt21 == 11:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:111: HEX_DIGIT
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:111: HEX_DIGIT
             pass 
             self.mHEX_DIGIT()
 
 
         elif alt21 == 12:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:121: TYPED_VALUE
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:121: TYPED_VALUE
             pass 
             self.mTYPED_VALUE()
 
 
         elif alt21 == 13:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:133: STRING
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:133: STRING
             pass 
             self.mSTRING()
 
 
         elif alt21 == 14:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:140: NAME
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:140: NAME
             pass 
             self.mNAME()
 
 
         elif alt21 == 15:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:145: INDENT_OR_DEDENT
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:145: INDENT_OR_DEDENT
             pass 
             self.mINDENT_OR_DEDENT()
 
 
         elif alt21 == 16:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmLexer.g:1:162: WS
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmLexer.g:1:162: WS
             pass 
             self.mWS()
 
@@ -1524,10 +1510,10 @@ class pycasmLexer(Lexer):
         )
 
     DFA21_min = DFA.unpack(
-        u"\5\0\1\12\1\0\1\uffff\1\0\1\60\1\47\2\0\1\uffff\5\0\2\uffff\1"
-        u"\0\1\uffff\2\0\4\uffff\5\0\1\uffff\2\60\1\uffff\12\0\1\uffff\2"
-        u"\60\3\0\3\uffff\3\0\2\60\2\uffff\2\0\1\uffff\1\60\1\uffff\1\0\1"
-        u"\60\1\0\1\60\1\0\1\101\1\0"
+        u"\5\0\1\12\1\0\1\uffff\1\0\1\60\1\47\2\0\1\uffff\5\0\2\uffff\1\0"
+        u"\1\uffff\2\0\4\uffff\5\0\1\uffff\2\60\1\uffff\12\0\1\uffff\2\60"
+        u"\3\0\3\uffff\3\0\2\60\2\uffff\2\0\1\uffff\1\60\1\uffff\1\0\1\60"
+        u"\1\0\1\60\1\0\1\101\1\0"
         )
 
     DFA21_max = DFA.unpack(
@@ -1556,11 +1542,11 @@ class pycasmLexer(Lexer):
 
             
     DFA21_transition = [
-        DFA.unpack(u"\11\14\1\2\1\6\2\14\1\5\22\14\1\16\2\14\1\3\3\14\1"
-        u"\10\6\14\1\1\1\14\12\4\7\14\6\11\24\15\4\14\1\13\1\14\6\11\14\15"
-        u"\2\12\6\15\uff85\14"),
-        DFA.unpack(u"\12\22\1\uffff\2\22\1\uffff\25\22\1\uffff\12\22\1"
-        u"\20\22\22\32\21\4\22\1\21\1\22\4\21\1\17\25\21\uff85\22"),
+        DFA.unpack(u"\11\14\1\2\1\6\2\14\1\5\22\14\1\16\2\14\1\3\3\14\1\10"
+        u"\6\14\1\1\1\14\12\4\7\14\6\11\24\15\4\14\1\13\1\14\6\11\14\15\2"
+        u"\12\6\15\uff85\14"),
+        DFA.unpack(u"\12\22\1\uffff\2\22\1\uffff\25\22\1\uffff\12\22\1\20"
+        u"\22\22\32\21\4\22\1\21\1\22\4\21\1\17\25\21\uff85\22"),
         DFA.unpack(u"\11\22\1\25\1\26\2\22\1\26\22\22\1\27\2\22\1\24\uffdc"
         u"\22"),
         DFA.unpack(u"\12\30\1\33\2\30\1\32\25\30\1\32\uffdc\30"),

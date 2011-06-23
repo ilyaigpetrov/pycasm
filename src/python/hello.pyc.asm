@@ -4,7 +4,7 @@
 #
 
 ..def python(body, version):
-	return adaptor.createFromType(HEX, 'B3F20D0A')
+	return adaptor.createFromType(HEX, 'D1F20D0A')
 
 ..def stamp(body, time):
 	return adaptor.createFromType(HEX, '00000000')

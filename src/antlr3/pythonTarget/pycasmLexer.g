@@ -28,7 +28,6 @@ lexer grammar pycasmLexer;
 
 options {
 language=Python;
-tokenVocab=pycasmLexer;
 }
 
 tokens {
@@ -37,6 +36,7 @@ INDENT;
 BLOCK;
 ARGS;
 GEN;
+NEWLINE;
 }
 
 @header {

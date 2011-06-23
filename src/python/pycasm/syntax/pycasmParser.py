@@ -1,4 +1,4 @@
-# $ANTLR 3.1.3 Mar 17, 2009 19:23:44 G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g 2011-06-22 00:39:53
+# $ANTLR 3.1.3 Mar 18, 2009 10:09:25 /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g 2011-06-23 13:21:08
 
 import sys
 from antlr3 import *
@@ -12,74 +12,57 @@ from antlr3.tree import *
 HIDDEN = BaseRecognizer.HIDDEN
 
 # token types
-DOT_DOT_BODY=42
-DOT_DOT_NAME=28
-INDENTDEDENT=30
-DOT_DOT_ARGS=41
-HexAlpha=27
+Alpha=16
+DOT_DOT_BODY=20
+DOT_DOT_NAME=13
+Type=26
+DOT_DOT_ARGS=18
+AlphaNum=31
+TYPED_VALUE=27
+DOT_END=10
+HexAlpha=32
+HEX_DIGIT=24
 DEDENT=4
+Digit=30
+HEX_DQUAD=22
 EOF=-1
-HexDigit=13
-SYM=49
+ROOT=33
+HexDigit=25
+SYM=35
 INDENT=5
-NAME=20
-NNN=29
-HEX=48
-PYTHON_CHAR=35
-DIRECTIVE_ARGS=44
-DOT_DOT_DIRECTIVE_ARGS=39
+NAME=11
+WS=14
+NonWS=19
+NEWLINE=9
+HEX=34
+BLOCK=6
 ARGS=7
 GEN=8
-INDENT_OR_DEDENT=34
-COMMENT=23
-UNRESTRICTED_DIRECTIVE=33
-DOT_ARGS=45
-HEX_QUAD=9
-HEX_PAIR=11
-PYTHON_BLOCK=31
-DIRECTIVE_ARGUMENT=25
-Any=32
-Alpha=18
-Type=15
-AlphaNum=24
-TYPED_VALUE=16
-DOT_END=14
-NONWS=38
-HEX_DIGIT=12
-P=37
-HEX_DQUAD=10
-Digit=26
-ROOT=47
-DOT_DOT_DIRECTIVE_BODY=40
-WS=22
-NEWLINE=21
-NonWS=43
-BLOCK=6
-PCHAR=36
-DOT_NAME=19
-HEX_SEQUENCE=46
-STRING=17
+DOT_NAME=12
+INDENT_OR_DEDENT=29
+COMMENT=15
+DOT_ARGS=17
+HEX_QUAD=21
+HEX_PAIR=23
+STRING=28
 
 # token names
 tokenNames = [
     "<invalid>", "<EOR>", "<DOWN>", "<UP>", 
-    "DEDENT", "INDENT", "BLOCK", "ARGS", "GEN", "HEX_QUAD", "HEX_DQUAD", 
-    "HEX_PAIR", "HEX_DIGIT", "HexDigit", "DOT_END", "Type", "TYPED_VALUE", 
-    "STRING", "Alpha", "DOT_NAME", "NAME", "NEWLINE", "WS", "COMMENT", "AlphaNum", 
-    "DIRECTIVE_ARGUMENT", "Digit", "HexAlpha", "DOT_DOT_NAME", "NNN", "INDENTDEDENT", 
-    "PYTHON_BLOCK", "Any", "UNRESTRICTED_DIRECTIVE", "INDENT_OR_DEDENT", 
-    "PYTHON_CHAR", "PCHAR", "P", "NONWS", "DOT_DOT_DIRECTIVE_ARGS", "DOT_DOT_DIRECTIVE_BODY", 
-    "DOT_DOT_ARGS", "DOT_DOT_BODY", "NonWS", "DIRECTIVE_ARGS", "DOT_ARGS", 
-    "HEX_SEQUENCE", "ROOT", "HEX", "SYM"
+    "DEDENT", "INDENT", "BLOCK", "ARGS", "GEN", "NEWLINE", "DOT_END", "NAME", 
+    "DOT_NAME", "DOT_DOT_NAME", "WS", "COMMENT", "Alpha", "DOT_ARGS", "DOT_DOT_ARGS", 
+    "NonWS", "DOT_DOT_BODY", "HEX_QUAD", "HEX_DQUAD", "HEX_PAIR", "HEX_DIGIT", 
+    "HexDigit", "Type", "TYPED_VALUE", "STRING", "INDENT_OR_DEDENT", "Digit", 
+    "AlphaNum", "HexAlpha", "ROOT", "HEX", "SYM"
 ]
 
 
 
 
 class pycasmParser(Parser):
-    grammarFileName = "G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g"
-    antlr_version = version_str_to_tuple("3.1.3 Mar 17, 2009 19:23:44")
-    antlr_version_str = "3.1.3 Mar 17, 2009 19:23:44"
+    grammarFileName = "/root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g"
+    antlr_version = version_str_to_tuple("3.1.3 Mar 18, 2009 10:09:25")
+    antlr_version_str = "3.1.3 Mar 18, 2009 10:09:25"
     tokenNames = tokenNames
 
     def __init__(self, input, state=None, *args, **kwargs):
@@ -171,7 +154,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "root"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:38:1: root : ( block | ( sp )+ )? EOF -> ^( ROOT ( block )? ) ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:64:1: root : ( block | ( sp )+ )? EOF -> ^( ROOT ( block )? ) ;
     def root(self, ):
 
         retval = self.root_return()
@@ -197,13 +180,13 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:39:2: ( ( block | ( sp )+ )? EOF -> ^( ROOT ( block )? ) )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:3: ( block | ( sp )+ )? EOF
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:65:2: ( ( block | ( sp )+ )? EOF -> ^( ROOT ( block )? ) )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:3: ( block | ( sp )+ )? EOF
                 pass 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:3: ( block | ( sp )+ )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:3: ( block | ( sp )+ )?
                 alt2 = 3
                 LA2 = self.input.LA(1)
-                if LA2 == INDENT or LA2 == HEX_QUAD or LA2 == HEX_DQUAD or LA2 == HEX_PAIR or LA2 == TYPED_VALUE or LA2 == STRING or LA2 == DOT_NAME or LA2 == NAME or LA2 == DOT_DOT_NAME:
+                if LA2 == INDENT or LA2 == NAME or LA2 == DOT_NAME or LA2 == DOT_DOT_NAME or LA2 == HEX_QUAD or LA2 == HEX_DQUAD or LA2 == HEX_PAIR or LA2 == TYPED_VALUE or LA2 == STRING:
                     alt2 = 1
                 elif LA2 == NEWLINE:
                     LA2_2 = self.input.LA(2)
@@ -220,9 +203,9 @@ class pycasmParser(Parser):
                     elif (self.synpred3_pycasmParser()) :
                         alt2 = 2
                 if alt2 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:4: block
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:4: block
                     pass 
-                    self._state.following.append(self.FOLLOW_block_in_root72)
+                    self._state.following.append(self.FOLLOW_block_in_root75)
                     block1 = self.block()
 
                     self._state.following.pop()
@@ -231,22 +214,22 @@ class pycasmParser(Parser):
 
 
                 elif alt2 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:11: ( sp )+
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:11: ( sp )+
                     pass 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:11: ( sp )+
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:11: ( sp )+
                     cnt1 = 0
                     while True: #loop1
                         alt1 = 2
                         LA1_0 = self.input.LA(1)
 
-                        if ((NEWLINE <= LA1_0 <= WS)) :
+                        if (LA1_0 == NEWLINE or LA1_0 == WS) :
                             alt1 = 1
 
 
                         if alt1 == 1:
-                            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: sp
+                            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: sp
                             pass 
-                            self._state.following.append(self.FOLLOW_sp_in_root75)
+                            self._state.following.append(self.FOLLOW_sp_in_root78)
                             sp2 = self.sp()
 
                             self._state.following.pop()
@@ -268,7 +251,7 @@ class pycasmParser(Parser):
 
 
 
-                EOF3=self.match(self.input, EOF, self.FOLLOW_EOF_in_root80) 
+                EOF3=self.match(self.input, EOF, self.FOLLOW_EOF_in_root83) 
                 if self._state.backtracking == 0:
                     stream_EOF.add(EOF3)
 
@@ -290,12 +273,12 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 41:3: -> ^( ROOT ( block )? )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:41:6: ^( ROOT ( block )? )
+                    # 67:3: -> ^( ROOT ( block )? )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:67:6: ^( ROOT ( block )? )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(ROOT, "ROOT"), root_1)
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:41:13: ( block )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:67:13: ( block )?
                     if stream_block.hasNext():
                         self._adaptor.addChild(root_1, stream_block.nextTree())
 
@@ -342,7 +325,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "sp"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:44:1: sp : ( WS | NEWLINE )+ ->;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:70:1: sp : ( WS | NEWLINE )+ ->;
     def sp(self, ):
 
         retval = self.sp_return()
@@ -366,10 +349,10 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:44:4: ( ( WS | NEWLINE )+ ->)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:3: ( WS | NEWLINE )+
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:70:4: ( ( WS | NEWLINE )+ ->)
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:3: ( WS | NEWLINE )+
                 pass 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:3: ( WS | NEWLINE )+
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:3: ( WS | NEWLINE )+
                 cnt3 = 0
                 while True: #loop3
                     alt3 = 3
@@ -392,17 +375,17 @@ class pycasmParser(Parser):
 
 
                     if alt3 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:4: WS
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:4: WS
                         pass 
-                        WS4=self.match(self.input, WS, self.FOLLOW_WS_in_sp104) 
+                        WS4=self.match(self.input, WS, self.FOLLOW_WS_in_sp107) 
                         if self._state.backtracking == 0:
                             stream_WS.add(WS4)
 
 
                     elif alt3 == 2:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:7: NEWLINE
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:7: NEWLINE
                         pass 
-                        NEWLINE5=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_sp106) 
+                        NEWLINE5=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_sp109) 
                         if self._state.backtracking == 0:
                             stream_NEWLINE.add(NEWLINE5)
 
@@ -437,7 +420,7 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 45:17: ->
+                    # 71:17: ->
                     root_0 = None
 
 
@@ -477,7 +460,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "block"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:48:1: block : h= block_head ( block_chain )* -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* ) ->;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:74:1: block : h= block_head ( block_chain )* -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* ) ->;
     def block(self, ):
 
         retval = self.block_return()
@@ -500,23 +483,23 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:49:2: (h= block_head ( block_chain )* -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* ) ->)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:50:3: h= block_head ( block_chain )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:75:2: (h= block_head ( block_chain )* -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* ) ->)
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:76:3: h= block_head ( block_chain )*
                 pass 
-                self._state.following.append(self.FOLLOW_block_head_in_block125)
+                self._state.following.append(self.FOLLOW_block_head_in_block128)
                 h = self.block_head()
 
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_block_head.add(h.tree)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:51:3: ( block_chain )*
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:77:3: ( block_chain )*
                 while True: #loop4
                     alt4 = 2
                     alt4 = self.dfa4.predict(self.input)
                     if alt4 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: block_chain
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: block_chain
                         pass 
-                        self._state.following.append(self.FOLLOW_block_chain_in_block129)
+                        self._state.following.append(self.FOLLOW_block_chain_in_block132)
                         block_chain6 = self.block_chain()
 
                         self._state.following.pop()
@@ -546,13 +529,13 @@ class pycasmParser(Parser):
 
                     root_0 = self._adaptor.nil()
                     if not isinstance(h.tree, type(None)) :
-                        # 52:3: -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* )
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:52:47: ^( BLOCK block_head ( block_chain )* )
+                        # 78:3: -> { not isinstance($h.tree, type(None)) }? ^( BLOCK block_head ( block_chain )* )
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:78:47: ^( BLOCK block_head ( block_chain )* )
                         root_1 = self._adaptor.nil()
                         root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(BLOCK, "BLOCK"), root_1)
 
                         self._adaptor.addChild(root_1, stream_block_head.nextTree())
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:52:66: ( block_chain )*
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:78:66: ( block_chain )*
                         while stream_block_chain.hasNext():
                             self._adaptor.addChild(root_1, stream_block_chain.nextTree())
 
@@ -563,7 +546,7 @@ class pycasmParser(Parser):
 
 
                     else: 
-                        # 53:3: ->
+                        # 79:3: ->
                         root_0 = None
 
                     retval.tree = root_0
@@ -602,7 +585,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "block_head"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:56:1: block_head : ( chain_element | block_chain );
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:82:1: block_head : ( chain_element | block_chain );
     def block_head(self, ):
 
         retval = self.block_head_return()
@@ -624,15 +607,15 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:57:2: ( chain_element | block_chain )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:83:2: ( chain_element | block_chain )
                 alt5 = 2
                 LA5_0 = self.input.LA(1)
 
-                if ((HEX_QUAD <= LA5_0 <= HEX_PAIR) or (TYPED_VALUE <= LA5_0 <= STRING) or LA5_0 == NAME) :
+                if (LA5_0 == NAME or (HEX_QUAD <= LA5_0 <= HEX_PAIR) or (TYPED_VALUE <= LA5_0 <= STRING)) :
                     alt5 = 1
                 elif (LA5_0 == DOT_NAME) and ((self.input.LT(1).getCharPositionInLine() == 0 or self.input.LT(-1) and self.input.LT(-1).getType() in [INDENT, DEDENT, NEWLINE] )):
                     alt5 = 2
-                elif (LA5_0 == INDENT or (NEWLINE <= LA5_0 <= WS) or LA5_0 == DOT_DOT_NAME) :
+                elif (LA5_0 == INDENT or LA5_0 == NEWLINE or (DOT_DOT_NAME <= LA5_0 <= WS)) :
                     alt5 = 2
                 else:
                     if self._state.backtracking > 0:
@@ -643,11 +626,11 @@ class pycasmParser(Parser):
                     raise nvae
 
                 if alt5 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:58:3: chain_element
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:84:3: chain_element
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_chain_element_in_block_head162)
+                    self._state.following.append(self.FOLLOW_chain_element_in_block_head165)
                     chain_element7 = self.chain_element()
 
                     self._state.following.pop()
@@ -656,11 +639,11 @@ class pycasmParser(Parser):
 
 
                 elif alt5 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:59:4: block_chain
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:85:4: block_chain
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_block_chain_in_block_head167)
+                    self._state.following.append(self.FOLLOW_block_chain_in_block_head170)
                     block_chain8 = self.block_chain()
 
                     self._state.following.pop()
@@ -700,7 +683,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "block_chain"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:62:1: block_chain : ( space_element )+ ( chain_element )? ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:88:1: block_chain : ( space_element )+ ( chain_element )? ;
     def block_chain(self, ):
 
         retval = self.block_chain_return()
@@ -722,20 +705,20 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:63:2: ( ( space_element )+ ( chain_element )? )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:3: ( space_element )+ ( chain_element )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:89:2: ( ( space_element )+ ( chain_element )? )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:3: ( space_element )+ ( chain_element )?
                 pass 
                 root_0 = self._adaptor.nil()
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:3: ( space_element )+
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:3: ( space_element )+
                 cnt6 = 0
                 while True: #loop6
                     alt6 = 2
                     alt6 = self.dfa6.predict(self.input)
                     if alt6 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: space_element
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: space_element
                         pass 
-                        self._state.following.append(self.FOLLOW_space_element_in_block_chain180)
+                        self._state.following.append(self.FOLLOW_space_element_in_block_chain183)
                         space_element9 = self.space_element()
 
                         self._state.following.pop()
@@ -754,13 +737,13 @@ class pycasmParser(Parser):
                         raise eee
 
                     cnt6 += 1
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:18: ( chain_element )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:18: ( chain_element )?
                 alt7 = 2
                 alt7 = self.dfa7.predict(self.input)
                 if alt7 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: chain_element
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: chain_element
                     pass 
-                    self._state.following.append(self.FOLLOW_chain_element_in_block_chain183)
+                    self._state.following.append(self.FOLLOW_chain_element_in_block_chain186)
                     chain_element10 = self.chain_element()
 
                     self._state.following.pop()
@@ -804,7 +787,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "chain_element"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:67:1: chain_element : ( sym_name | generative | hex_code );
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:93:1: chain_element : ( sym_name | generative | hex_code );
     def chain_element(self, ):
 
         retval = self.chain_element_return()
@@ -828,7 +811,7 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:68:2: ( sym_name | generative | hex_code )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:94:2: ( sym_name | generative | hex_code )
                 alt8 = 3
                 LA8 = self.input.LA(1)
                 if LA8 == NAME:
@@ -846,11 +829,11 @@ class pycasmParser(Parser):
                     raise nvae
 
                 if alt8 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:68:4: sym_name
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:94:4: sym_name
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_sym_name_in_chain_element195)
+                    self._state.following.append(self.FOLLOW_sym_name_in_chain_element198)
                     sym_name11 = self.sym_name()
 
                     self._state.following.pop()
@@ -859,11 +842,11 @@ class pycasmParser(Parser):
 
 
                 elif alt8 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:69:4: generative
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:95:4: generative
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_generative_in_chain_element200)
+                    self._state.following.append(self.FOLLOW_generative_in_chain_element203)
                     generative12 = self.generative()
 
                     self._state.following.pop()
@@ -872,11 +855,11 @@ class pycasmParser(Parser):
 
 
                 elif alt8 == 3:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:70:4: hex_code
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:96:4: hex_code
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_hex_code_in_chain_element205)
+                    self._state.following.append(self.FOLLOW_hex_code_in_chain_element208)
                     hex_code13 = self.hex_code()
 
                     self._state.following.pop()
@@ -916,7 +899,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "space_element"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:73:1: space_element : ( directive | unrestricted_directive | ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? | sp );
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:99:1: space_element : ( directive | unrestricted_directive | ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? | sp );
     def space_element(self, ):
 
         retval = self.space_element_return()
@@ -950,7 +933,7 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:74:2: ( directive | unrestricted_directive | ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? | sp )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:100:2: ( directive | unrestricted_directive | ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? | sp )
                 alt12 = 4
                 LA12_0 = self.input.LA(1)
 
@@ -986,11 +969,11 @@ class pycasmParser(Parser):
                     raise nvae
 
                 if alt12 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:75:3: directive
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:101:3: directive
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_directive_in_space_element218)
+                    self._state.following.append(self.FOLLOW_directive_in_space_element221)
                     directive14 = self.directive()
 
                     self._state.following.pop()
@@ -999,11 +982,11 @@ class pycasmParser(Parser):
 
 
                 elif alt12 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:76:4: unrestricted_directive
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:102:4: unrestricted_directive
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_unrestricted_directive_in_space_element223)
+                    self._state.following.append(self.FOLLOW_unrestricted_directive_in_space_element226)
                     unrestricted_directive15 = self.unrestricted_directive()
 
                     self._state.following.pop()
@@ -1012,20 +995,20 @@ class pycasmParser(Parser):
 
 
                 elif alt12 == 3:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:4: ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:4: ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )?
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:4: ( NEWLINE )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:4: ( NEWLINE )?
                     alt9 = 2
                     LA9_0 = self.input.LA(1)
 
                     if (LA9_0 == NEWLINE) :
                         alt9 = 1
                     if alt9 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: NEWLINE
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: NEWLINE
                         pass 
-                        NEWLINE16=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_space_element228)
+                        NEWLINE16=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_space_element231)
                         if self._state.backtracking == 0:
 
                             NEWLINE16_tree = self._adaptor.createWithPayload(NEWLINE16)
@@ -1034,14 +1017,14 @@ class pycasmParser(Parser):
 
 
 
-                    INDENT17=self.match(self.input, INDENT, self.FOLLOW_INDENT_in_space_element231)
-                    self._state.following.append(self.FOLLOW_block_in_space_element234)
+                    INDENT17=self.match(self.input, INDENT, self.FOLLOW_INDENT_in_space_element234)
+                    self._state.following.append(self.FOLLOW_block_in_space_element237)
                     block18 = self.block()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         self._adaptor.addChild(root_0, block18.tree)
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:27: ( NEWLINE )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:27: ( NEWLINE )?
                     alt10 = 2
                     LA10_0 = self.input.LA(1)
 
@@ -1051,9 +1034,9 @@ class pycasmParser(Parser):
                         if (self.synpred15_pycasmParser()) :
                             alt10 = 1
                     if alt10 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: NEWLINE
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: NEWLINE
                         pass 
-                        NEWLINE19=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_space_element236)
+                        NEWLINE19=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_space_element239)
                         if self._state.backtracking == 0:
 
                             NEWLINE19_tree = self._adaptor.createWithPayload(NEWLINE19)
@@ -1062,7 +1045,7 @@ class pycasmParser(Parser):
 
 
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:42: ( DEDENT )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:42: ( DEDENT )?
                     alt11 = 2
                     LA11_0 = self.input.LA(1)
 
@@ -1072,20 +1055,20 @@ class pycasmParser(Parser):
                         if (self.synpred16_pycasmParser()) :
                             alt11 = 1
                     if alt11 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DEDENT
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DEDENT
                         pass 
-                        DEDENT20=self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_space_element239)
+                        DEDENT20=self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_space_element242)
 
 
 
 
 
                 elif alt12 == 4:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:78:4: sp
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:104:4: sp
                     pass 
                     root_0 = self._adaptor.nil()
 
-                    self._state.following.append(self.FOLLOW_sp_in_space_element246)
+                    self._state.following.append(self.FOLLOW_sp_in_space_element249)
                     sp21 = self.sp()
 
                     self._state.following.pop()
@@ -1125,7 +1108,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "unrestricted_directive"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:81:1: unrestricted_directive : DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? ) ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:107:1: unrestricted_directive : DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? ) ;
     def unrestricted_directive(self, ):
 
         retval = self.unrestricted_directive_return()
@@ -1152,37 +1135,37 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:82:2: ( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? ) )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:3: DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:108:2: ( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? ) )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:3: DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )?
                 pass 
-                DOT_DOT_NAME22=self.match(self.input, DOT_DOT_NAME, self.FOLLOW_DOT_DOT_NAME_in_unrestricted_directive259) 
+                DOT_DOT_NAME22=self.match(self.input, DOT_DOT_NAME, self.FOLLOW_DOT_DOT_NAME_in_unrestricted_directive262) 
                 if self._state.backtracking == 0:
                     stream_DOT_DOT_NAME.add(DOT_DOT_NAME22)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:16: ( DOT_DOT_ARGS )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:16: ( DOT_DOT_ARGS )?
                 alt13 = 2
                 LA13_0 = self.input.LA(1)
 
                 if (LA13_0 == DOT_DOT_ARGS) :
                     alt13 = 1
                 if alt13 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DOT_DOT_ARGS
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DOT_DOT_ARGS
                     pass 
-                    DOT_DOT_ARGS23=self.match(self.input, DOT_DOT_ARGS, self.FOLLOW_DOT_DOT_ARGS_in_unrestricted_directive261) 
+                    DOT_DOT_ARGS23=self.match(self.input, DOT_DOT_ARGS, self.FOLLOW_DOT_DOT_ARGS_in_unrestricted_directive264) 
                     if self._state.backtracking == 0:
                         stream_DOT_DOT_ARGS.add(DOT_DOT_ARGS23)
 
 
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:30: ( DOT_DOT_BODY )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:30: ( DOT_DOT_BODY )?
                 alt14 = 2
                 LA14_0 = self.input.LA(1)
 
                 if (LA14_0 == DOT_DOT_BODY) :
                     alt14 = 1
                 if alt14 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DOT_DOT_BODY
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DOT_DOT_BODY
                     pass 
-                    DOT_DOT_BODY24=self.match(self.input, DOT_DOT_BODY, self.FOLLOW_DOT_DOT_BODY_in_unrestricted_directive264) 
+                    DOT_DOT_BODY24=self.match(self.input, DOT_DOT_BODY, self.FOLLOW_DOT_DOT_BODY_in_unrestricted_directive267) 
                     if self._state.backtracking == 0:
                         stream_DOT_DOT_BODY.add(DOT_DOT_BODY24)
 
@@ -1207,18 +1190,18 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 83:44: -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:47: ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? )
+                    # 109:44: -> ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:47: ^( DOT_DOT_NAME ( DOT_DOT_ARGS )? ( DOT_DOT_BODY )? )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(stream_DOT_DOT_NAME.nextNode(), root_1)
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:62: ( DOT_DOT_ARGS )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:62: ( DOT_DOT_ARGS )?
                     if stream_DOT_DOT_ARGS.hasNext():
                         self._adaptor.addChild(root_1, stream_DOT_DOT_ARGS.nextNode())
 
 
                     stream_DOT_DOT_ARGS.reset();
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:83:76: ( DOT_DOT_BODY )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:109:76: ( DOT_DOT_BODY )?
                     if stream_DOT_DOT_BODY.hasNext():
                         self._adaptor.addChild(root_1, stream_DOT_DOT_BODY.nextNode())
 
@@ -1265,7 +1248,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "directive"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:86:1: directive : {...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? ) -> ^( ( block )? ) ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:112:1: directive : {...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? ) -> ^( ( block )? ) ;
     def directive(self, ):
 
         retval = self.directive_return()
@@ -1310,8 +1293,8 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:87:2: ({...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? ) -> ^( ( block )? ) )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:88:3: {...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:113:2: ({...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? ) -> ^( ( block )? ) )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:114:3: {...}? => ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? )
                 pass 
                 if not ((self.input.LT(1).getCharPositionInLine() == 0 or self.input.LT(-1) and self.input.LT(-1).getType() in [INDENT, DEDENT, NEWLINE] )):
                     if self._state.backtracking > 0:
@@ -1319,16 +1302,16 @@ class pycasmParser(Parser):
 
                     raise FailedPredicateException(self.input, "directive", " self.input.LT(1).getCharPositionInLine() == 0 or self.input.LT(-1) and self.input.LT(-1).getType() in [INDENT, DEDENT, NEWLINE] ")
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:89:6: ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:90:3: directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:115:6: ( directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )? )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:116:3: directive_header ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )?
                 pass 
-                self._state.following.append(self.FOLLOW_directive_header_in_directive300)
+                self._state.following.append(self.FOLLOW_directive_header_in_directive303)
                 directive_header25 = self.directive_header()
 
                 self._state.following.pop()
                 if self._state.backtracking == 0:
                     stream_directive_header.add(directive_header25.tree)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:4: ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:4: ( NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )? | NEWLINE )?
                 alt19 = 3
                 LA19_0 = self.input.LA(1)
 
@@ -1340,21 +1323,21 @@ class pycasmParser(Parser):
                     elif (self.synpred25_pycasmParser()) :
                         alt19 = 2
                 if alt19 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:5: NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:5: NEWLINE INDENT block ( NEWLINE )? ( DEDENT )? ( DOT_END ( WS )+ ( NAME ) )?
                     pass 
-                    NEWLINE26=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive306) 
+                    NEWLINE26=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive309) 
                     if self._state.backtracking == 0:
                         stream_NEWLINE.add(NEWLINE26)
-                    INDENT27=self.match(self.input, INDENT, self.FOLLOW_INDENT_in_directive308) 
+                    INDENT27=self.match(self.input, INDENT, self.FOLLOW_INDENT_in_directive311) 
                     if self._state.backtracking == 0:
                         stream_INDENT.add(INDENT27)
-                    self._state.following.append(self.FOLLOW_block_in_directive310)
+                    self._state.following.append(self.FOLLOW_block_in_directive313)
                     block28 = self.block()
 
                     self._state.following.pop()
                     if self._state.backtracking == 0:
                         stream_block.add(block28.tree)
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:26: ( NEWLINE )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:26: ( NEWLINE )?
                     alt15 = 2
                     LA15_0 = self.input.LA(1)
 
@@ -1364,15 +1347,15 @@ class pycasmParser(Parser):
                         if (self.synpred20_pycasmParser()) :
                             alt15 = 1
                     if alt15 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: NEWLINE
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: NEWLINE
                         pass 
-                        NEWLINE29=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive312) 
+                        NEWLINE29=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive315) 
                         if self._state.backtracking == 0:
                             stream_NEWLINE.add(NEWLINE29)
 
 
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:35: ( DEDENT )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:35: ( DEDENT )?
                     alt16 = 2
                     LA16_0 = self.input.LA(1)
 
@@ -1382,15 +1365,15 @@ class pycasmParser(Parser):
                         if (self.synpred21_pycasmParser()) :
                             alt16 = 1
                     if alt16 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DEDENT
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DEDENT
                         pass 
-                        DEDENT30=self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_directive315) 
+                        DEDENT30=self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_directive318) 
                         if self._state.backtracking == 0:
                             stream_DEDENT.add(DEDENT30)
 
 
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:5: ( DOT_END ( WS )+ ( NAME ) )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:5: ( DOT_END ( WS )+ ( NAME ) )?
                     alt18 = 2
                     LA18_0 = self.input.LA(1)
 
@@ -1400,12 +1383,12 @@ class pycasmParser(Parser):
                         if (self.synpred23_pycasmParser()) :
                             alt18 = 1
                     if alt18 == 1:
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:6: DOT_END ( WS )+ ( NAME )
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:6: DOT_END ( WS )+ ( NAME )
                         pass 
-                        DOT_END31=self.match(self.input, DOT_END, self.FOLLOW_DOT_END_in_directive323) 
+                        DOT_END31=self.match(self.input, DOT_END, self.FOLLOW_DOT_END_in_directive326) 
                         if self._state.backtracking == 0:
                             stream_DOT_END.add(DOT_END31)
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:14: ( WS )+
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:14: ( WS )+
                         cnt17 = 0
                         while True: #loop17
                             alt17 = 2
@@ -1416,9 +1399,9 @@ class pycasmParser(Parser):
 
 
                             if alt17 == 1:
-                                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: WS
+                                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: WS
                                 pass 
-                                WS32=self.match(self.input, WS, self.FOLLOW_WS_in_directive325) 
+                                WS32=self.match(self.input, WS, self.FOLLOW_WS_in_directive328) 
                                 if self._state.backtracking == 0:
                                     stream_WS.add(WS32)
 
@@ -1434,10 +1417,10 @@ class pycasmParser(Parser):
                                 raise eee
 
                             cnt17 += 1
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:93:6: ( NAME )
-                        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:93:7: NAME
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:119:6: ( NAME )
+                        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:119:7: NAME
                         pass 
-                        NAME33=self.match(self.input, NAME, self.FOLLOW_NAME_in_directive334) 
+                        NAME33=self.match(self.input, NAME, self.FOLLOW_NAME_in_directive337) 
                         if self._state.backtracking == 0:
                             stream_NAME.add(NAME33)
                         if self._state.backtracking == 0:
@@ -1456,9 +1439,9 @@ class pycasmParser(Parser):
 
 
                 elif alt19 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:101:6: NEWLINE
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:127:6: NEWLINE
                     pass 
-                    NEWLINE34=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive363) 
+                    NEWLINE34=self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_directive366) 
                     if self._state.backtracking == 0:
                         stream_NEWLINE.add(NEWLINE34)
 
@@ -1486,12 +1469,12 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 103:6: -> ^( ( block )? )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:103:9: ^( ( block )? )
+                    # 129:6: -> ^( ( block )? )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:129:9: ^( ( block )? )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(directive_header25.tree, root_1)
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:103:36: ( block )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:129:36: ( block )?
                     if stream_block.hasNext():
                         self._adaptor.addChild(root_1, stream_block.nextTree())
 
@@ -1538,7 +1521,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "directive_header"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:106:1: directive_header : DOT_NAME ( DOT_ARGS )? -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) ) ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:132:1: directive_header : DOT_NAME ( DOT_ARGS )? -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) ) ;
     def directive_header(self, ):
 
         retval = self.directive_header_return()
@@ -1562,22 +1545,22 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:107:2: ( DOT_NAME ( DOT_ARGS )? -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) ) )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:108:3: DOT_NAME ( DOT_ARGS )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:133:2: ( DOT_NAME ( DOT_ARGS )? -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) ) )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:134:3: DOT_NAME ( DOT_ARGS )?
                 pass 
-                DOT_NAME35=self.match(self.input, DOT_NAME, self.FOLLOW_DOT_NAME_in_directive_header397) 
+                DOT_NAME35=self.match(self.input, DOT_NAME, self.FOLLOW_DOT_NAME_in_directive_header400) 
                 if self._state.backtracking == 0:
                     stream_DOT_NAME.add(DOT_NAME35)
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:108:12: ( DOT_ARGS )?
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:134:12: ( DOT_ARGS )?
                 alt20 = 2
                 LA20_0 = self.input.LA(1)
 
                 if (LA20_0 == DOT_ARGS) :
                     alt20 = 1
                 if alt20 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DOT_ARGS
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DOT_ARGS
                     pass 
-                    DOT_ARGS36=self.match(self.input, DOT_ARGS, self.FOLLOW_DOT_ARGS_in_directive_header399) 
+                    DOT_ARGS36=self.match(self.input, DOT_ARGS, self.FOLLOW_DOT_ARGS_in_directive_header402) 
                     if self._state.backtracking == 0:
                         stream_DOT_ARGS.add(DOT_ARGS36)
 
@@ -1602,16 +1585,16 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 108:22: -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:108:25: ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) )
+                    # 134:22: -> ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:134:25: ^( DOT_NAME ^( ARGS ( DOT_ARGS )? ) )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(stream_DOT_NAME.nextNode(), root_1)
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:108:36: ^( ARGS ( DOT_ARGS )? )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:134:36: ^( ARGS ( DOT_ARGS )? )
                     root_2 = self._adaptor.nil()
                     root_2 = self._adaptor.becomeRoot(self._adaptor.createFromType(ARGS, "ARGS"), root_2)
 
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:108:43: ( DOT_ARGS )?
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:134:43: ( DOT_ARGS )?
                     if stream_DOT_ARGS.hasNext():
                         self._adaptor.addChild(root_2, stream_DOT_ARGS.nextNode())
 
@@ -1660,7 +1643,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "sym_name"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:111:1: sym_name : NAME -> ^( SYM NAME ) ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:137:1: sym_name : NAME -> ^( SYM NAME ) ;
     def sym_name(self, ):
 
         retval = self.sym_name_return()
@@ -1681,10 +1664,10 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:112:2: ( NAME -> ^( SYM NAME ) )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:113:3: NAME
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:138:2: ( NAME -> ^( SYM NAME ) )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:139:3: NAME
                 pass 
-                NAME37=self.match(self.input, NAME, self.FOLLOW_NAME_in_sym_name426) 
+                NAME37=self.match(self.input, NAME, self.FOLLOW_NAME_in_sym_name429) 
                 if self._state.backtracking == 0:
                     stream_NAME.add(NAME37)
 
@@ -1706,8 +1689,8 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 113:8: -> ^( SYM NAME )
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:113:11: ^( SYM NAME )
+                    # 139:8: -> ^( SYM NAME )
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:139:11: ^( SYM NAME )
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self._adaptor.createFromType(SYM, "SYM"), root_1)
 
@@ -1753,7 +1736,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "generative"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:116:1: generative : (c= STRING | c= TYPED_VALUE ) -> ^() ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:142:1: generative : (c= STRING | c= TYPED_VALUE ) -> ^() ;
     def generative(self, ):
 
         retval = self.generative_return()
@@ -1775,10 +1758,10 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:117:2: ( (c= STRING | c= TYPED_VALUE ) -> ^() )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:118:2: (c= STRING | c= TYPED_VALUE )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:143:2: ( (c= STRING | c= TYPED_VALUE ) -> ^() )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:144:2: (c= STRING | c= TYPED_VALUE )
                 pass 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:118:2: (c= STRING | c= TYPED_VALUE )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:144:2: (c= STRING | c= TYPED_VALUE )
                 alt21 = 2
                 LA21_0 = self.input.LA(1)
 
@@ -1795,17 +1778,17 @@ class pycasmParser(Parser):
                     raise nvae
 
                 if alt21 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:119:3: c= STRING
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:145:3: c= STRING
                     pass 
-                    c=self.match(self.input, STRING, self.FOLLOW_STRING_in_generative452) 
+                    c=self.match(self.input, STRING, self.FOLLOW_STRING_in_generative455) 
                     if self._state.backtracking == 0:
                         stream_STRING.add(c)
 
 
                 elif alt21 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:120:4: c= TYPED_VALUE
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:146:4: c= TYPED_VALUE
                     pass 
-                    c=self.match(self.input, TYPED_VALUE, self.FOLLOW_TYPED_VALUE_in_generative459) 
+                    c=self.match(self.input, TYPED_VALUE, self.FOLLOW_TYPED_VALUE_in_generative462) 
                     if self._state.backtracking == 0:
                         stream_TYPED_VALUE.add(c)
 
@@ -1830,8 +1813,8 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 121:4: -> ^()
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:121:7: ^()
+                    # 147:4: -> ^()
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:147:7: ^()
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self.adaptor.create(GEN, c.text), root_1)
 
@@ -1875,7 +1858,7 @@ class pycasmParser(Parser):
 
 
     # $ANTLR start "hex_code"
-    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:124:1: hex_code : (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD ) -> ^() ;
+    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:150:1: hex_code : (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD ) -> ^() ;
     def hex_code(self, ):
 
         retval = self.hex_code_return()
@@ -1898,10 +1881,10 @@ class pycasmParser(Parser):
                     success = True
                     return retval
 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:124:9: ( (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD ) -> ^() )
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:125:2: (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:150:9: ( (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD ) -> ^() )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:151:2: (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD )
                 pass 
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:125:2: (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD )
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:151:2: (h= HEX_PAIR | h= HEX_QUAD | h= HEX_DQUAD )
                 alt22 = 3
                 LA22 = self.input.LA(1)
                 if LA22 == HEX_PAIR:
@@ -1919,25 +1902,25 @@ class pycasmParser(Parser):
                     raise nvae
 
                 if alt22 == 1:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:125:4: h= HEX_PAIR
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:151:4: h= HEX_PAIR
                     pass 
-                    h=self.match(self.input, HEX_PAIR, self.FOLLOW_HEX_PAIR_in_hex_code482) 
+                    h=self.match(self.input, HEX_PAIR, self.FOLLOW_HEX_PAIR_in_hex_code485) 
                     if self._state.backtracking == 0:
                         stream_HEX_PAIR.add(h)
 
 
                 elif alt22 == 2:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:126:4: h= HEX_QUAD
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:152:4: h= HEX_QUAD
                     pass 
-                    h=self.match(self.input, HEX_QUAD, self.FOLLOW_HEX_QUAD_in_hex_code489) 
+                    h=self.match(self.input, HEX_QUAD, self.FOLLOW_HEX_QUAD_in_hex_code492) 
                     if self._state.backtracking == 0:
                         stream_HEX_QUAD.add(h)
 
 
                 elif alt22 == 3:
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:127:4: h= HEX_DQUAD
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:153:4: h= HEX_DQUAD
                     pass 
-                    h=self.match(self.input, HEX_DQUAD, self.FOLLOW_HEX_DQUAD_in_hex_code496) 
+                    h=self.match(self.input, HEX_DQUAD, self.FOLLOW_HEX_DQUAD_in_hex_code499) 
                     if self._state.backtracking == 0:
                         stream_HEX_DQUAD.add(h)
 
@@ -1962,8 +1945,8 @@ class pycasmParser(Parser):
 
 
                     root_0 = self._adaptor.nil()
-                    # 129:4: -> ^()
-                    # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:129:7: ^()
+                    # 155:4: -> ^()
+                    # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:155:7: ^()
                     root_1 = self._adaptor.nil()
                     root_1 = self._adaptor.becomeRoot(self.adaptor.create(HEX, h.text), root_1)
 
@@ -1999,10 +1982,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred1_pycasmParser"
     def synpred1_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:4: ( block )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:4: block
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:4: ( block )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:4: block
         pass 
-        self._state.following.append(self.FOLLOW_block_in_synpred1_pycasmParser72)
+        self._state.following.append(self.FOLLOW_block_in_synpred1_pycasmParser75)
         self.block()
 
         self._state.following.pop()
@@ -2014,23 +1997,23 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred3_pycasmParser"
     def synpred3_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:11: ( ( sp )+ )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:11: ( sp )+
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:11: ( ( sp )+ )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:11: ( sp )+
         pass 
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:40:11: ( sp )+
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:66:11: ( sp )+
         cnt23 = 0
         while True: #loop23
             alt23 = 2
             LA23_0 = self.input.LA(1)
 
-            if ((NEWLINE <= LA23_0 <= WS)) :
+            if (LA23_0 == NEWLINE or LA23_0 == WS) :
                 alt23 = 1
 
 
             if alt23 == 1:
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: sp
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: sp
                 pass 
-                self._state.following.append(self.FOLLOW_sp_in_synpred3_pycasmParser75)
+                self._state.following.append(self.FOLLOW_sp_in_synpred3_pycasmParser78)
                 self.sp()
 
                 self._state.following.pop()
@@ -2055,10 +2038,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred4_pycasmParser"
     def synpred4_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:4: ( WS )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:4: WS
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:4: ( WS )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:4: WS
         pass 
-        self.match(self.input, WS, self.FOLLOW_WS_in_synpred4_pycasmParser104)
+        self.match(self.input, WS, self.FOLLOW_WS_in_synpred4_pycasmParser107)
 
 
     # $ANTLR end "synpred4_pycasmParser"
@@ -2067,10 +2050,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred5_pycasmParser"
     def synpred5_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:7: ( NEWLINE )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:45:7: NEWLINE
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:7: ( NEWLINE )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:71:7: NEWLINE
         pass 
-        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred5_pycasmParser106)
+        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred5_pycasmParser109)
 
 
     # $ANTLR end "synpred5_pycasmParser"
@@ -2079,10 +2062,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred6_pycasmParser"
     def synpred6_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:51:3: ( block_chain )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:51:3: block_chain
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:77:3: ( block_chain )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:77:3: block_chain
         pass 
-        self._state.following.append(self.FOLLOW_block_chain_in_synpred6_pycasmParser129)
+        self._state.following.append(self.FOLLOW_block_chain_in_synpred6_pycasmParser132)
         self.block_chain()
 
         self._state.following.pop()
@@ -2094,10 +2077,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred8_pycasmParser"
     def synpred8_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:3: ( space_element )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:3: space_element
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:3: ( space_element )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:3: space_element
         pass 
-        self._state.following.append(self.FOLLOW_space_element_in_synpred8_pycasmParser180)
+        self._state.following.append(self.FOLLOW_space_element_in_synpred8_pycasmParser183)
         self.space_element()
 
         self._state.following.pop()
@@ -2109,10 +2092,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred9_pycasmParser"
     def synpred9_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:18: ( chain_element )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:64:18: chain_element
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:18: ( chain_element )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:90:18: chain_element
         pass 
-        self._state.following.append(self.FOLLOW_chain_element_in_synpred9_pycasmParser183)
+        self._state.following.append(self.FOLLOW_chain_element_in_synpred9_pycasmParser186)
         self.chain_element()
 
         self._state.following.pop()
@@ -2124,10 +2107,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred12_pycasmParser"
     def synpred12_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:75:3: ( directive )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:75:3: directive
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:101:3: ( directive )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:101:3: directive
         pass 
-        self._state.following.append(self.FOLLOW_directive_in_synpred12_pycasmParser218)
+        self._state.following.append(self.FOLLOW_directive_in_synpred12_pycasmParser221)
         self.directive()
 
         self._state.following.pop()
@@ -2139,10 +2122,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred15_pycasmParser"
     def synpred15_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:27: ( NEWLINE )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:27: NEWLINE
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:27: ( NEWLINE )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:27: NEWLINE
         pass 
-        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred15_pycasmParser236)
+        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred15_pycasmParser239)
 
 
     # $ANTLR end "synpred15_pycasmParser"
@@ -2151,10 +2134,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred16_pycasmParser"
     def synpred16_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:36: ( DEDENT )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:36: DEDENT
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:36: ( DEDENT )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:36: DEDENT
         pass 
-        self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred16_pycasmParser239)
+        self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred16_pycasmParser242)
 
 
     # $ANTLR end "synpred16_pycasmParser"
@@ -2163,50 +2146,50 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred17_pycasmParser"
     def synpred17_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:4: ( ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:4: ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )?
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:4: ( ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )? )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:4: ( NEWLINE )? INDENT block ( NEWLINE )? ( DEDENT )?
         pass 
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:4: ( NEWLINE )?
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:4: ( NEWLINE )?
         alt24 = 2
         LA24_0 = self.input.LA(1)
 
         if (LA24_0 == NEWLINE) :
             alt24 = 1
         if alt24 == 1:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: NEWLINE
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: NEWLINE
             pass 
-            self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred17_pycasmParser228)
+            self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred17_pycasmParser231)
 
 
 
-        self.match(self.input, INDENT, self.FOLLOW_INDENT_in_synpred17_pycasmParser231)
-        self._state.following.append(self.FOLLOW_block_in_synpred17_pycasmParser234)
+        self.match(self.input, INDENT, self.FOLLOW_INDENT_in_synpred17_pycasmParser234)
+        self._state.following.append(self.FOLLOW_block_in_synpred17_pycasmParser237)
         self.block()
 
         self._state.following.pop()
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:27: ( NEWLINE )?
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:27: ( NEWLINE )?
         alt25 = 2
         LA25_0 = self.input.LA(1)
 
         if (LA25_0 == NEWLINE) :
             alt25 = 1
         if alt25 == 1:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: NEWLINE
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: NEWLINE
             pass 
-            self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred17_pycasmParser236)
+            self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred17_pycasmParser239)
 
 
 
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:77:42: ( DEDENT )?
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:103:42: ( DEDENT )?
         alt26 = 2
         LA26_0 = self.input.LA(1)
 
         if (LA26_0 == DEDENT) :
             alt26 = 1
         if alt26 == 1:
-            # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: DEDENT
+            # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: DEDENT
             pass 
-            self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred17_pycasmParser239)
+            self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred17_pycasmParser242)
 
 
 
@@ -2218,10 +2201,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred20_pycasmParser"
     def synpred20_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:26: ( NEWLINE )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:26: NEWLINE
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:26: ( NEWLINE )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:26: NEWLINE
         pass 
-        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred20_pycasmParser312)
+        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred20_pycasmParser315)
 
 
     # $ANTLR end "synpred20_pycasmParser"
@@ -2230,10 +2213,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred21_pycasmParser"
     def synpred21_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:35: ( DEDENT )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:91:35: DEDENT
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:35: ( DEDENT )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:117:35: DEDENT
         pass 
-        self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred21_pycasmParser315)
+        self.match(self.input, DEDENT, self.FOLLOW_DEDENT_in_synpred21_pycasmParser318)
 
 
     # $ANTLR end "synpred21_pycasmParser"
@@ -2242,11 +2225,11 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred23_pycasmParser"
     def synpred23_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:6: ( DOT_END ( WS )+ ( NAME ) )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:6: DOT_END ( WS )+ ( NAME )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:6: ( DOT_END ( WS )+ ( NAME ) )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:6: DOT_END ( WS )+ ( NAME )
         pass 
-        self.match(self.input, DOT_END, self.FOLLOW_DOT_END_in_synpred23_pycasmParser323)
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:92:14: ( WS )+
+        self.match(self.input, DOT_END, self.FOLLOW_DOT_END_in_synpred23_pycasmParser326)
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:118:14: ( WS )+
         cnt27 = 0
         while True: #loop27
             alt27 = 2
@@ -2257,9 +2240,9 @@ class pycasmParser(Parser):
 
 
             if alt27 == 1:
-                # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:0:0: WS
+                # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:0:0: WS
                 pass 
-                self.match(self.input, WS, self.FOLLOW_WS_in_synpred23_pycasmParser325)
+                self.match(self.input, WS, self.FOLLOW_WS_in_synpred23_pycasmParser328)
 
 
             else:
@@ -2273,10 +2256,10 @@ class pycasmParser(Parser):
                 raise eee
 
             cnt27 += 1
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:93:6: ( NAME )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:93:7: NAME
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:119:6: ( NAME )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:119:7: NAME
         pass 
-        self.match(self.input, NAME, self.FOLLOW_NAME_in_synpred23_pycasmParser334)
+        self.match(self.input, NAME, self.FOLLOW_NAME_in_synpred23_pycasmParser337)
 
 
 
@@ -2288,10 +2271,10 @@ class pycasmParser(Parser):
 
     # $ANTLR start "synpred25_pycasmParser"
     def synpred25_pycasmParser_fragment(self, ):
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:101:6: ( NEWLINE )
-        # G:\\storage\\workspace\\unpyc\\pycasm_\\\\src\\antlr3\\pythonTarget\\pycasmParser.g:101:6: NEWLINE
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:127:6: ( NEWLINE )
+        # /root/Desktop/pycasm/pycasm//src/antlr3/pythonTarget/pycasmParser.g:127:6: NEWLINE
         pass 
-        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred25_pycasmParser363)
+        self.match(self.input, NEWLINE, self.FOLLOW_NEWLINE_in_synpred25_pycasmParser366)
 
 
     # $ANTLR end "synpred25_pycasmParser"
@@ -2526,8 +2509,8 @@ class pycasmParser(Parser):
 
             
     DFA4_transition = [
-        DFA.unpack(u"\1\1\1\14\3\uffff\3\1\2\uffff\1\1\1\uffff\2\1\1\uffff"
-        u"\1\12\1\1\1\2\1\15\5\uffff\1\13"),
+        DFA.unpack(u"\1\1\1\14\3\uffff\1\2\2\1\1\12\1\13\1\15\6\uffff\3\1"
+        u"\3\uffff\2\1"),
         DFA.unpack(u""),
         DFA.unpack(u"\1\uffff"),
         DFA.unpack(u""),
@@ -2568,7 +2551,7 @@ class pycasmParser(Parser):
                 index4_0 = input.index()
                 input.rewind()
                 s = -1
-                if (LA4_0 == EOF or LA4_0 == DEDENT or (HEX_QUAD <= LA4_0 <= HEX_PAIR) or LA4_0 == DOT_END or (TYPED_VALUE <= LA4_0 <= STRING) or LA4_0 == NAME):
+                if (LA4_0 == EOF or LA4_0 == DEDENT or (DOT_END <= LA4_0 <= NAME) or (HEX_QUAD <= LA4_0 <= HEX_PAIR) or (TYPED_VALUE <= LA4_0 <= STRING)):
                     s = 1
 
                 elif (LA4_0 == NEWLINE):
@@ -2709,8 +2692,8 @@ class pycasmParser(Parser):
 
             
     DFA6_transition = [
-        DFA.unpack(u"\1\1\1\14\3\uffff\3\1\2\uffff\1\1\1\uffff\2\1\1\uffff"
-        u"\1\12\1\1\1\10\1\15\5\uffff\1\13"),
+        DFA.unpack(u"\1\1\1\14\3\uffff\1\10\2\1\1\12\1\13\1\15\6\uffff\3"
+        u"\1\3\uffff\2\1"),
         DFA.unpack(u""),
         DFA.unpack(u""),
         DFA.unpack(u""),
@@ -2751,7 +2734,7 @@ class pycasmParser(Parser):
                 index6_0 = input.index()
                 input.rewind()
                 s = -1
-                if (LA6_0 == EOF or LA6_0 == DEDENT or (HEX_QUAD <= LA6_0 <= HEX_PAIR) or LA6_0 == DOT_END or (TYPED_VALUE <= LA6_0 <= STRING) or LA6_0 == NAME):
+                if (LA6_0 == EOF or LA6_0 == DEDENT or (DOT_END <= LA6_0 <= NAME) or (HEX_QUAD <= LA6_0 <= HEX_PAIR) or (TYPED_VALUE <= LA6_0 <= STRING)):
                     s = 1
 
                 elif (LA6_0 == NEWLINE):
@@ -2892,8 +2875,8 @@ class pycasmParser(Parser):
 
             
     DFA7_transition = [
-        DFA.unpack(u"\1\7\1\11\3\uffff\1\5\1\6\1\4\2\uffff\1\11\1\uffff"
-        u"\1\3\1\2\1\uffff\1\10\1\1\1\7\1\11\5\uffff\1\11"),
+        DFA.unpack(u"\1\7\1\11\3\uffff\1\7\1\11\1\1\1\10\2\11\6\uffff\1\5"
+        u"\1\6\1\4\3\uffff\1\3\1\2"),
         DFA.unpack(u"\1\uffff"),
         DFA.unpack(u"\1\uffff"),
         DFA.unpack(u"\1\uffff"),
@@ -3004,7 +2987,7 @@ class pycasmParser(Parser):
                 elif (LA7_0 == DOT_NAME) and ((self.input.LT(1).getCharPositionInLine() == 0 or self.input.LT(-1) and self.input.LT(-1).getType() in [INDENT, DEDENT, NEWLINE] )):
                     s = 8
 
-                elif (LA7_0 == INDENT or LA7_0 == DOT_END or LA7_0 == WS or LA7_0 == DOT_DOT_NAME):
+                elif (LA7_0 == INDENT or LA7_0 == DOT_END or (DOT_DOT_NAME <= LA7_0 <= WS)):
                     s = 9
 
                  
@@ -3070,70 +3053,70 @@ class pycasmParser(Parser):
             raise nvae
  
 
-    FOLLOW_block_in_root72 = frozenset([])
-    FOLLOW_sp_in_root75 = frozenset([21, 22])
-    FOLLOW_EOF_in_root80 = frozenset([1])
-    FOLLOW_WS_in_sp104 = frozenset([1, 21, 22])
-    FOLLOW_NEWLINE_in_sp106 = frozenset([1, 21, 22])
-    FOLLOW_block_head_in_block125 = frozenset([1, 5, 19, 21, 22, 28])
-    FOLLOW_block_chain_in_block129 = frozenset([1, 5, 19, 21, 22, 28])
-    FOLLOW_chain_element_in_block_head162 = frozenset([1])
-    FOLLOW_block_chain_in_block_head167 = frozenset([1])
-    FOLLOW_space_element_in_block_chain180 = frozenset([1, 5, 9, 10, 11, 16, 17, 19, 20, 21, 22, 28])
-    FOLLOW_chain_element_in_block_chain183 = frozenset([1])
-    FOLLOW_sym_name_in_chain_element195 = frozenset([1])
-    FOLLOW_generative_in_chain_element200 = frozenset([1])
-    FOLLOW_hex_code_in_chain_element205 = frozenset([1])
-    FOLLOW_directive_in_space_element218 = frozenset([1])
-    FOLLOW_unrestricted_directive_in_space_element223 = frozenset([1])
-    FOLLOW_NEWLINE_in_space_element228 = frozenset([5])
-    FOLLOW_INDENT_in_space_element231 = frozenset([5, 9, 10, 11, 16, 17, 19, 20, 21, 22, 28])
-    FOLLOW_block_in_space_element234 = frozenset([1, 4, 21])
-    FOLLOW_NEWLINE_in_space_element236 = frozenset([1, 4])
-    FOLLOW_DEDENT_in_space_element239 = frozenset([1])
-    FOLLOW_sp_in_space_element246 = frozenset([1])
-    FOLLOW_DOT_DOT_NAME_in_unrestricted_directive259 = frozenset([1, 41, 42])
-    FOLLOW_DOT_DOT_ARGS_in_unrestricted_directive261 = frozenset([1, 42])
-    FOLLOW_DOT_DOT_BODY_in_unrestricted_directive264 = frozenset([1])
-    FOLLOW_directive_header_in_directive300 = frozenset([1, 21])
-    FOLLOW_NEWLINE_in_directive306 = frozenset([5])
-    FOLLOW_INDENT_in_directive308 = frozenset([5, 9, 10, 11, 16, 17, 19, 20, 21, 22, 28])
-    FOLLOW_block_in_directive310 = frozenset([1, 4, 14, 21])
-    FOLLOW_NEWLINE_in_directive312 = frozenset([1, 4, 14])
-    FOLLOW_DEDENT_in_directive315 = frozenset([1, 14])
-    FOLLOW_DOT_END_in_directive323 = frozenset([22])
-    FOLLOW_WS_in_directive325 = frozenset([20, 22])
-    FOLLOW_NAME_in_directive334 = frozenset([1])
-    FOLLOW_NEWLINE_in_directive363 = frozenset([1])
-    FOLLOW_DOT_NAME_in_directive_header397 = frozenset([1, 45])
-    FOLLOW_DOT_ARGS_in_directive_header399 = frozenset([1])
-    FOLLOW_NAME_in_sym_name426 = frozenset([1])
-    FOLLOW_STRING_in_generative452 = frozenset([1])
-    FOLLOW_TYPED_VALUE_in_generative459 = frozenset([1])
-    FOLLOW_HEX_PAIR_in_hex_code482 = frozenset([1])
-    FOLLOW_HEX_QUAD_in_hex_code489 = frozenset([1])
-    FOLLOW_HEX_DQUAD_in_hex_code496 = frozenset([1])
-    FOLLOW_block_in_synpred1_pycasmParser72 = frozenset([1])
-    FOLLOW_sp_in_synpred3_pycasmParser75 = frozenset([1, 21, 22])
-    FOLLOW_WS_in_synpred4_pycasmParser104 = frozenset([1])
-    FOLLOW_NEWLINE_in_synpred5_pycasmParser106 = frozenset([1])
-    FOLLOW_block_chain_in_synpred6_pycasmParser129 = frozenset([1])
-    FOLLOW_space_element_in_synpred8_pycasmParser180 = frozenset([1])
-    FOLLOW_chain_element_in_synpred9_pycasmParser183 = frozenset([1])
-    FOLLOW_directive_in_synpred12_pycasmParser218 = frozenset([1])
-    FOLLOW_NEWLINE_in_synpred15_pycasmParser236 = frozenset([1])
-    FOLLOW_DEDENT_in_synpred16_pycasmParser239 = frozenset([1])
-    FOLLOW_NEWLINE_in_synpred17_pycasmParser228 = frozenset([5])
-    FOLLOW_INDENT_in_synpred17_pycasmParser231 = frozenset([5, 9, 10, 11, 16, 17, 19, 20, 21, 22, 28])
-    FOLLOW_block_in_synpred17_pycasmParser234 = frozenset([1, 4, 21])
-    FOLLOW_NEWLINE_in_synpred17_pycasmParser236 = frozenset([1, 4])
-    FOLLOW_DEDENT_in_synpred17_pycasmParser239 = frozenset([1])
-    FOLLOW_NEWLINE_in_synpred20_pycasmParser312 = frozenset([1])
-    FOLLOW_DEDENT_in_synpred21_pycasmParser315 = frozenset([1])
-    FOLLOW_DOT_END_in_synpred23_pycasmParser323 = frozenset([22])
-    FOLLOW_WS_in_synpred23_pycasmParser325 = frozenset([20, 22])
-    FOLLOW_NAME_in_synpred23_pycasmParser334 = frozenset([1])
-    FOLLOW_NEWLINE_in_synpred25_pycasmParser363 = frozenset([1])
+    FOLLOW_block_in_root75 = frozenset([])
+    FOLLOW_sp_in_root78 = frozenset([9, 14])
+    FOLLOW_EOF_in_root83 = frozenset([1])
+    FOLLOW_WS_in_sp107 = frozenset([1, 9, 14])
+    FOLLOW_NEWLINE_in_sp109 = frozenset([1, 9, 14])
+    FOLLOW_block_head_in_block128 = frozenset([1, 5, 9, 12, 13, 14])
+    FOLLOW_block_chain_in_block132 = frozenset([1, 5, 9, 12, 13, 14])
+    FOLLOW_chain_element_in_block_head165 = frozenset([1])
+    FOLLOW_block_chain_in_block_head170 = frozenset([1])
+    FOLLOW_space_element_in_block_chain183 = frozenset([1, 5, 9, 11, 12, 13, 14, 21, 22, 23, 27, 28])
+    FOLLOW_chain_element_in_block_chain186 = frozenset([1])
+    FOLLOW_sym_name_in_chain_element198 = frozenset([1])
+    FOLLOW_generative_in_chain_element203 = frozenset([1])
+    FOLLOW_hex_code_in_chain_element208 = frozenset([1])
+    FOLLOW_directive_in_space_element221 = frozenset([1])
+    FOLLOW_unrestricted_directive_in_space_element226 = frozenset([1])
+    FOLLOW_NEWLINE_in_space_element231 = frozenset([5])
+    FOLLOW_INDENT_in_space_element234 = frozenset([5, 9, 11, 12, 13, 14, 21, 22, 23, 27, 28])
+    FOLLOW_block_in_space_element237 = frozenset([1, 4, 9])
+    FOLLOW_NEWLINE_in_space_element239 = frozenset([1, 4])
+    FOLLOW_DEDENT_in_space_element242 = frozenset([1])
+    FOLLOW_sp_in_space_element249 = frozenset([1])
+    FOLLOW_DOT_DOT_NAME_in_unrestricted_directive262 = frozenset([1, 18, 20])
+    FOLLOW_DOT_DOT_ARGS_in_unrestricted_directive264 = frozenset([1, 20])
+    FOLLOW_DOT_DOT_BODY_in_unrestricted_directive267 = frozenset([1])
+    FOLLOW_directive_header_in_directive303 = frozenset([1, 9])
+    FOLLOW_NEWLINE_in_directive309 = frozenset([5])
+    FOLLOW_INDENT_in_directive311 = frozenset([5, 9, 11, 12, 13, 14, 21, 22, 23, 27, 28])
+    FOLLOW_block_in_directive313 = frozenset([1, 4, 9, 10])
+    FOLLOW_NEWLINE_in_directive315 = frozenset([1, 4, 10])
+    FOLLOW_DEDENT_in_directive318 = frozenset([1, 10])
+    FOLLOW_DOT_END_in_directive326 = frozenset([14])
+    FOLLOW_WS_in_directive328 = frozenset([11, 14])
+    FOLLOW_NAME_in_directive337 = frozenset([1])
+    FOLLOW_NEWLINE_in_directive366 = frozenset([1])
+    FOLLOW_DOT_NAME_in_directive_header400 = frozenset([1, 17])
+    FOLLOW_DOT_ARGS_in_directive_header402 = frozenset([1])
+    FOLLOW_NAME_in_sym_name429 = frozenset([1])
+    FOLLOW_STRING_in_generative455 = frozenset([1])
+    FOLLOW_TYPED_VALUE_in_generative462 = frozenset([1])
+    FOLLOW_HEX_PAIR_in_hex_code485 = frozenset([1])
+    FOLLOW_HEX_QUAD_in_hex_code492 = frozenset([1])
+    FOLLOW_HEX_DQUAD_in_hex_code499 = frozenset([1])
+    FOLLOW_block_in_synpred1_pycasmParser75 = frozenset([1])
+    FOLLOW_sp_in_synpred3_pycasmParser78 = frozenset([1, 9, 14])
+    FOLLOW_WS_in_synpred4_pycasmParser107 = frozenset([1])
+    FOLLOW_NEWLINE_in_synpred5_pycasmParser109 = frozenset([1])
+    FOLLOW_block_chain_in_synpred6_pycasmParser132 = frozenset([1])
+    FOLLOW_space_element_in_synpred8_pycasmParser183 = frozenset([1])
+    FOLLOW_chain_element_in_synpred9_pycasmParser186 = frozenset([1])
+    FOLLOW_directive_in_synpred12_pycasmParser221 = frozenset([1])
+    FOLLOW_NEWLINE_in_synpred15_pycasmParser239 = frozenset([1])
+    FOLLOW_DEDENT_in_synpred16_pycasmParser242 = frozenset([1])
+    FOLLOW_NEWLINE_in_synpred17_pycasmParser231 = frozenset([5])
+    FOLLOW_INDENT_in_synpred17_pycasmParser234 = frozenset([5, 9, 11, 12, 13, 14, 21, 22, 23, 27, 28])
+    FOLLOW_block_in_synpred17_pycasmParser237 = frozenset([1, 4, 9])
+    FOLLOW_NEWLINE_in_synpred17_pycasmParser239 = frozenset([1, 4])
+    FOLLOW_DEDENT_in_synpred17_pycasmParser242 = frozenset([1])
+    FOLLOW_NEWLINE_in_synpred20_pycasmParser315 = frozenset([1])
+    FOLLOW_DEDENT_in_synpred21_pycasmParser318 = frozenset([1])
+    FOLLOW_DOT_END_in_synpred23_pycasmParser326 = frozenset([14])
+    FOLLOW_WS_in_synpred23_pycasmParser328 = frozenset([11, 14])
+    FOLLOW_NAME_in_synpred23_pycasmParser337 = frozenset([1])
+    FOLLOW_NEWLINE_in_synpred25_pycasmParser366 = frozenset([1])
 
 
 

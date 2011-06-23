@@ -1,12 +1,12 @@
 import os
-# grammars processing
 import sys
 target = 'python'
-project_root = os.path.abspath('..')+'\\'
-pycasm_sources = project_root+'\\src\\'
-grammars_dir = pycasm_sources+'antlr3\\'+target+'Target\\'
-output_dir = pycasm_sources+target+'\\pycasm\\syntax\\' # relative to grammars_dir
-libs_dir = project_root+'libs\\'
+s = os.path.sep
+project_root = os.path.abspath('..')+s
+pycasm_sources = project_root+s+'src'+s
+grammars_dir = pycasm_sources+'antlr3'+s+target+'Target'+s
+output_dir = pycasm_sources+target+s+'pycasm'+s+'syntax'+s # relative to grammars_dir
+libs_dir = project_root+'libs'+s
 
 def trace(msg):
 	print "\n!"+msg+"\n"
@@ -21,10 +21,11 @@ ext = '.g'
 # Grammars must be processed in this fixed order.
 gs = ['pycasmLexer','pycasmParser','pycasmDirectiveWalker','pycasmSymnameWalker','pycasmGenerativeWalker','pycasmBytecodeGenerator']
 for g in gs:
-	os.system('pyantlr -o '+output_dir+' '+grammars_dir+g+ext) and fail()
+	print('generating recognizer from grammar:'+g)
+	os.system('./pyantlr -o '+output_dir+' '+grammars_dir+g+ext) and fail()
 # patch 'No module named <...>Lexer' error
 for g in gs[1:]:
 	filePath = output_dir + g + '.py'
-	os.system('.\\tools\\pypatch.py '+filePath) and fail('patching')
+	os.system('python .'+s+'tools'+s+'pypatch.py '+filePath) and fail('patching')
 # run tests
 os.system('python TestPycasm.py') and fail()

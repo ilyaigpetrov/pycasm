@@ -1,7 +1,9 @@
 import unittest
 import antlr3
 import sys
-sys.path.append('..\\src\\python')
+import os
+s = os.path.sep
+sys.path.append('..'+s+'src'+s+'python')
 from pycasm.syntax import pycasmLexer, pycasmParser, pycasmDirectiveWalker, pycasmSymnameWalker, pycasmGenerativeWalker, pycasmBytecodeGenerator
 
 def runLexer(input):
