@@ -1,5 +1,3 @@
-Java branch is obsolete but I still use it to compare with python implementation in buggy situations.
-
 If you have some feedback, want to collaborate or just to drop me a link:
 petrov.ilya@gmail.com
 
