@@ -50,12 +50,12 @@ Examples
  G:\pycasm_\src\python> python nod.pyc
  7
  G:\pycasm_\src\python> rm *.pyc
- ```.
+ ```
  To generate all recognizers (lexer, parser and so) and run tests on then:
  ```
  G:\pycasm_\tests> python .\test_them_all_python.py
- ```.
+ ```
  To run tests:
  ```
  G:\pycasm_\tests> python .\TestPycasm.py
- ```.
+ ```
