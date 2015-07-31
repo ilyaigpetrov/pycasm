@@ -30,10 +30,6 @@ When it's done, disassembling part of pycasm could be worked on.
 
 The alternative to this scheme is to create an AST form which is easily transformable to PyObject and back to assembly for purposes of disassembling.
 
-
-If you have some feedback, want to collaborate or just to drop me a link:
-petrov.ilya@gmail.com
-
 Examples
 --------
  Update: you have to cahnge python version tag in assembly files to make the lines below work.
