@@ -1,8 +1,10 @@
-== Pycasm ==
+Pycasm
+======
 
 Pycasm is an assembly language for .pyc files of CPython VM, which takes it's inspiration from [[http://jasmin.sourceforge.net/|Jasmin]] assembler of Java world.
 
-=== How it works ===
+How it works
+============
 
 In short:
 
@@ -13,7 +15,8 @@ triggers:
 
 input.pyc.asm | pycasmLexer | pycasmParser | pycasmDirectiveWalker | pycasmGenerativeWalker | pycasmSymnameWalker | pycasmBytecodeGenerator | input.pyc
 
-=== What it lives ===
+What it lives
+=============
 
 Pycasm strives hard to breathe. Bugs have covered its whole body. It keeps a hope to be rewritten one day. Till then pycasm has nothing to do but to keep going. No matter where, no matter how. I'm here to help it to make another step.
 
